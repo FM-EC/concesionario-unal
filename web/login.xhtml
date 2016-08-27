@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid id="grid" columns="2" cellpadding="5">
+                <p:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{loginBean.email}" required="true" validatorMessage="Email invalido">
+                    <f:validateRegex
+                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                </p:inputText>
+                
+                <p:outputLabel for="password" value="Password:" />
+                <p:password id="password" value="#{loginBean.password}" required="true"/>
+            
+            </h:panelGrid>
+            <p:messages id="messages"></p:messages>
+            <p:commandButton value="log in" id="login" update="messages" type="submit" action="#{loginBean.processLogin}" styleClass="ui-priority-primary" />
+        </h:form>
+        <br></br>
+        <h:link outcome="registro" value="¿No tienes cuenta?" />
+    </h:body>
+</html>
+
