@@ -4,6 +4,7 @@ Caso de Estudio Los concesionarios automovilísticos realizan compras de automó
 ## Tener en cuenta
 1. el archivo concesionario.sql es el script de la base de datos
 2. el archivo dummies.sql es un script para poblar la base de datos con datos dummies
+3. Cambiar los datos para acceder a la base de datos (usuario, contraseña..) en glasfish-resourses.xml
 
 ## Contribuidores
 * Monica Pineda
