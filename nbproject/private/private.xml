@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/web/login.xhtml</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/loginBean.java</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/dataAccess/Authentication.java</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/web/index.xhtml</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/businessLogic/AuthenticationFacade.java</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/businessLogic/AuthenticationFacadeLocal.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/carRegisterBean.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/dataAccess/Cars.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/businessLogic/CarsFacadeLocal.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/Proveedor.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/web/registroCarro.xhtml</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/ProviderService.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/ProviderConverter.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/businessLogic/CarsFacade.java</file>
         </group>
     </open-files>
 </project-private>

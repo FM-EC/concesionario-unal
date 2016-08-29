@@ -28,7 +28,6 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
     @Override
     // Authenticate users function using the entity autentication
     public boolean authenticate(String email, String password){
-        System.out.println(email);
         Authentication user = getUserByEmail(email);
         if(user == null){ return false; }
         return user.getPassword().equals(password);

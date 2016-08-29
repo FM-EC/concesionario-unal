@@ -19,10 +19,21 @@ public class CarsFacade extends AbstractFacade<Cars> implements CarsFacadeLocal 
 
     @PersistenceContext(unitName = "concesionarioPU")
     private EntityManager em;
-
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+
+    @Override
+    public boolean createCar(Cars entity) {
+        try {
+            em.persist(entity);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public CarsFacade() {

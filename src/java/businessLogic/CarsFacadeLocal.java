@@ -17,7 +17,9 @@ import javax.ejb.Local;
 public interface CarsFacadeLocal {
 
     void create(Cars cars);
-
+    
+    boolean createCar(Cars cars);
+    
     void edit(Cars cars);
 
     void remove(Cars cars);

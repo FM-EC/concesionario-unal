@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Regristrar carro nuevo</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid id="grid" columns="2" cellpadding="5">
+                <p:outputLabel for="provider" value="Provider:" />
+                <p:selectOneListbox id="provider" value="#{carRegisterBean.provider}" converter="providerConverter" var="t" filter="true" filterMatchMode="contains" required="true">
+                    <f:selectItems value="#{carRegisterBean.providers}" var="provider" itemLabel="#{provider.displayName}" itemValue="#{provider}" />
+
+                    <p:column>
+                        <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{t.displayName}" />
+                    </p:column>
+                </p:selectOneListbox>
+                
+                
+                <p:outputLabel for="marca" value="Marca:" />
+                <p:inputText id="marca" value="#{carRegisterBean.marca}" required="true">
+                </p:inputText>
+                
+                <p:outputLabel for="modelo" value="Modelo:" />
+                <p:inputText id="modelo" value="#{carRegisterBean.modelo}" required="true">
+                </p:inputText>
+                
+                <p:outputLabel for="color" value="Color:" />
+                <p:inputText id="color" value="#{carRegisterBean.color}" required="true">
+                </p:inputText>
+                
+                <p:outputLabel for="carriagePlate"  value="# Placa: " />
+                <p:inputMask id="carriagePlate" value="#{carRegisterBean.carriagePlate}" mask="aaa-999" required="true"/>
+                
+                <p:outputLabel for="transmissionType" value="Tipo de transmisión:" />
+                <p:selectOneRadio id="transmissionType" value="#{carRegisterBean.transmissionType}" required="true">
+                    <f:selectItem itemLabel="Manual" itemValue="Manual" />
+                    <f:selectItem itemLabel="Automático" itemValue="automatico" />
+                </p:selectOneRadio>
+                
+                <p:outputLabel for="chasisNumber" value="# chasis:" />
+                <p:inputText id="chasisNumber" value="#{carRegisterBean.chasisNumber}" required="true">
+                </p:inputText>
+                
+                <p:outputLabel for="engineNumber" value="# Engine:" />
+                <p:inputText id="engineNumber" value="#{carRegisterBean.engineNumber}" required="true">
+                </p:inputText>
+                
+                <p:outputLabel for="salesPrice" value="# Precio de venta:" />
+                <p:inputText id="salesPrice" value="#{carRegisterBean.salesPrice}" required="true" validatorMessage="Solo se aceptan numeros (campo precio venta)">
+                    <f:validateRegex pattern="^[0-9]*$" />
+                </p:inputText>
+                
+                <p:outputLabel for="purchasePrice" value="# Precio de compra:" />
+                <p:inputText id="purchasePrice" value="#{carRegisterBean.purchasePrice}" required="true" validatorMessage="Solo se aceptan numeros (campo precio compra)">
+                    <f:validateRegex pattern="^[0-9]*$" />
+                </p:inputText>
+                
+            </h:panelGrid>
+            <p:messages id="messages"></p:messages>
+            <p:commandButton value="Registrar Carro" id="registrar" update="messages" type="submit" action="#{carRegisterBean.registrarCarro}" styleClass="ui-priority-primary" />
+        </h:form>
+    </h:body>
+</html>
+

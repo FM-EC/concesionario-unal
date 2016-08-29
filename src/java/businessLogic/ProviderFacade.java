@@ -6,6 +6,7 @@
 package businessLogic;
 
 import dataAccess.Provider;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,9 +25,18 @@ public class ProviderFacade extends AbstractFacade<Provider> implements Provider
     protected EntityManager getEntityManager() {
         return em;
     }
-
+   
     public ProviderFacade() {
         super(Provider.class);
+    }
+
+    @Override
+    public List<Provider> findAll() {
+        try {
+            return em.createNamedQuery("Provider.findAll", Provider.class).getResultList();
+        } catch (Exception e) {
+            return null;
+        }
     }
     
 }
