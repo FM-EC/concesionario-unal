@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Modificar Carro</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="styles/style.css" type="text/css"></link>
+    </h:head>
+    <h:body>
+        <nav id="navegacion">
+            <div id="titulo">
+                <h1>AutUNAL</h1>
+            </div>
+            <ul>
+                <li><h:link outcome="index"><img src="https://maxcdn.icons8.com/Color/PNG/24/Transport/convertible-24.png" title="Convertible" width="24"></img><br></br>Inicio</h:link></li>
+                <li><h:link outcome="registroCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/City/car_theft-24.png" title="Car Theft" width="24"></img><br></br>Registrar Carro</h:link></li>
+                <li><h:link outcome="modificarCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Industry/automotive-24.png" title="Automotive" width="24"></img><br></br>Modificar Carro</h:link></li>
+                <li><h:link outcome="listarCarros" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/show_property-24.png" title="Show Property" width="24"></img><br></br>Listar Carros</h:link></li>
+                <li id="acercade"><h:link outcome="registro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Users/add_user_male-24.png" title="Add User Male" width="24"></img><br></br>Registro</h:link></li>
+                <li id="acercade"><h:link outcome="login" ><img src="https://maxcdn.icons8.com/Color/PNG/24/User_Interface/enter_2-24.png" title="Enter" width="24"></img><br></br>Ingresar</h:link></li>
+            </ul>
+        </nav>  
+        <br></br>
+        <div class="encabezado">
+            <hr></hr>
+            <p>Modificar características del carro</p>
+            <hr></hr>
+        </div>
+        <h:form>
+            <h:panelGrid id="grid" columns="2" cellpadding="11">
+                <p:outputLabel value="Marca"/> 
+                <p:inputText value="${modificarCarroBean.brand}">
+                    <f:validateRegex
+                        pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)" />
+                </p:inputText>
+                <p:outputLabel value="Precio de venta"/> 
+                <p:inputText value="${modificarCarroBean.salesPrice}">
+                    <f:validateRegex
+                        pattern="^\d+((\.|\,)\d{2})?$" />
+                </p:inputText>
+                <p:outputLabel value="Precio de compra"/> 
+                <p:inputText value="${modificarCarroBean.purchasePrice}">
+                    <f:validateRegex
+                        pattern="^\d+((\.|\,)\d{2})?$" />
+                </p:inputText>
+                <p:outputLabel value="Modelo"/> 
+                <p:inputText value="${modificarCarroBean.model}" >
+                    <f:validateRegex
+                        pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)" />
+                </p:inputText>
+                <p:outputLabel value="Color"/> 
+                <select value="${modificarCarroBean.color}">
+                    <option value="1">Rojo</option> 
+                    <option value="2">Azul</option> 
+                    <option value="3">Blanco</option>
+                    <option value="4">Gris</option> 
+                    <option value="5">Naranja</option> 
+                    <option value="6">Beige</option> 
+                </select>
+                <p:outputLabel value="Placa"/> 
+                <p:inputText value="${modificarCarroBean.carriagePlate}">
+                    <f:validateRegex
+                        pattern="^([A-Z]{3})+([0-9]{3})$" />
+                </p:inputText>
+                <p:outputLabel value="Transmisión"/> 
+                <form action="">
+                    <input type="radio" name="trans"><label>Automática</label> <br></br></input>
+                    <input type="radio" name="trans"><label>Manual</label> <br></br></input>
+                </form>
+                <p:outputLabel value="Chasis"/> 
+                <p:inputText>
+                    <f:validateRegex
+                        pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)" />
+                </p:inputText>
+                <p:outputLabel value="Motor"/> 
+                <p:inputText>
+                    <f:validateRegex
+                        pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)" />
+                </p:inputText>
+                <p:outputLabel value="Proveedor"/> 
+                <p:inputText>
+                    <f:validateRegex
+                        pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)" />
+                </p:inputText>
+            </h:panelGrid>
+            <p:messages id="messages"></p:messages>
+            <p:commandButton value="Guardar" />
+            <p:commandButton value="Cancelar" />
+            <br></br>
+        </h:form>
+    </h:body>
+</html>

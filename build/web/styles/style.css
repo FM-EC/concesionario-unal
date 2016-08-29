@@ -1,0 +1,356 @@
+/*
+	Archivo:  estilos.css
+	Autor: Carlos Gomez;
+	------------------------
+	Este archivo contiene los estilos que se usaran en mi pagina web para mostrar el contenido
+*/
+
+/*Se usa para que soporte caracteres Unicode*/
+@charset "UTF-8";
+
+/*Se importa una fuente del sitio Google Fonts*/
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,300,400italic);
+
+
+/* ****************** */
+/* TITULO Y MENU DE NAVEGACIoN */
+
+/* Elimina las margenes por defecto del navegador */
+* {
+	margin:0;
+}
+
+/*  Se crea un identificador (es unico) que contiene el titulo de la pagina
+    Tiene de alto 40pixeles, se indica que los elementos estaran alineados verticalmente
+    en la mitad. */
+#titulo{
+	align: center;
+	background-color: #ffffff;
+	height: 40px;
+	vertical-align: middle;
+        text-align: center;
+}
+
+/* Aqui se indica que cuando se tenga un atributo imagen se adapte al tamaño de la seccion titulo */
+#titulo img{
+	height: 40px;
+	width: auto;
+}
+
+
+/* Se indica el estilo de la barra de navegacion. Se ocultan los estilos de tipo de lista (esto es:; viñetas, por ejemplo) */
+/*Fixed nos permite dejar la barra fija al hacer scroll en la pagina*/
+.navegacion {
+	list-style-type: none;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+/*La separacion de cada elemento del menu sera de 50px a la derecha*/
+ li {
+  display: inline;
+	float: left;
+	padding-right: 50px;
+}
+
+.ui-corner-all {
+    border: 2px solid #ffffff;
+    
+}
+
+.ui-button-text-only .ui-button-text {
+    background:#0088b3;
+    color: #ffffff;
+    border: none;
+    
+}
+
+.ui-messages ul {
+    background-color: #f2dede;
+}
+
+.ui-messages-info-icon, .ui-messages-warn-icon, .ui-messages-error-icon, .ui-messages-fatal-icon, .ui-message-info-icon, .ui-message-warn-icon, .ui-message-error-icon, .ui-message-fatal-icon {
+    background: url("https://maxcdn.icons8.com/Color/PNG/24/Very_Basic/cancel-24.png") no-repeat;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.ui-messages-error, .ui-message-error {
+    color: darkred;
+    background-color: none;
+}
+
+.ui-state-hover{
+    box-shadow: #111;
+}
+/* Registrooo */
+form {
+    margin: auto;
+    display: table;
+}
+
+/* Carro */
+label {
+    padding:4px 11px;
+}
+
+table {
+    border-spacing: 2px;    
+}
+
+
+/*  Overflow controla que la forma en que los elementos se comportan en su contenedor.
+    Se usa hidden para que esconda los elementos. */
+ ul {
+  align: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #0088b3;
+}
+
+/*Alinea el texto de cada opcion en el menu al centro y se muestra en bloque. 
+  Cada bloque se rellena con 25px en vertical y horizontal */
+/*Se anula la decoracion; en este caso que no muestre el subrayado de enlace*/
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 25px 25px;
+  text-decoration: none;
+}
+
+/* Esto nos permite ver en la barra de navegacion cual es la pagina activa. El color es un azul claro
+     y la fuente se mostrara en negrita. */
+.active {
+    background-color: #c7f1ff;
+    color: #0088b3;
+    font-weight: bold;
+}
+
+/* Si no estan activos, pero si el mouse pasa encima de la opcion, se coloreara negro*/
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+/* Inidca que la opcion del menu acerca de aparezca a la derecha de la pagina*/
+#acercade {
+  float: right;
+}
+
+
+/* ************** */
+/* PAGINA */
+
+/* Se crea un estilo para redondear.
+    border-raduis nos permite modificar el radio del borde. 50% nos servira para crear un circulo.
+    El tamaño es 90% para que no ocupe todo el tamaño. */
+.redondear {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 90%;
+  width: auto;
+  margin: 40px;
+  /*position: relative;*/
+}
+
+/* Para cada imagen le aplicara redondear. Inline dice que solo ocupara el espacio dado en el bloque
+   donde se usara. Se muestra la imagen en tamaño completo. */
+.redondear img {
+  display: inline;
+  width: 100%;
+  height: 100%;
+}
+
+/*Se crea una linea de separacion con tamaño fijo de 350px.*/
+hr {
+  max-width: 350px;
+  border-color: #a9a9a9;
+  border-top: 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/*
+	Se define el tipo de letra predeterminado para cada etiqueta que involucra texto.
+	La tipografia predeterminada es Exo 2. Si el navegador no la admite buscara Helvetica, y asi.
+*/
+h1, h2, h3, h4, a, label, th {
+	font-family: "Exo 2", Helvetica, Verdana, sans-serif;
+	color: #a9a9a9;
+}
+
+p, .ui-widget, td {
+	font-family: "Exo 2", Helvetica, Verdana, sans-serif;
+	color: #838383;
+}
+
+/* Grupo de bloques en la pagina. Con margin-top le indico que se ubique a 200px del inicio de la pantalla.
+   Esto se realiza con el fin de que no se muestre encima de la barra de navegacion */
+.grupo {
+	margin-top: 200px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+
+/* Se realiza como una nueva seccion en la pagina*/
+.grupo2 {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 0;
+}
+
+.otrogrupo {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 0;
+  clear: both;
+}
+
+/* Se crea para indicar el titulo dentro del bloque grupo*/
+.encabezado{
+  text-align: center;
+  position: inline;
+}
+
+/*Bloque representa la division en grupo en zonas de 3. Tiene ancho fijo, el height si es auto.*/
+.bloque{
+	float: left;
+	margin: 10px;
+	padding: 10px;
+	width: 380px;
+	height: auto;
+}
+
+/* Indica que el texto de los parrafos se justifique. */
+.bloque p {
+  text-align: justify;
+}
+
+/*El color de fondo de la pagina sera blanco*/
+body {
+	background-color: #f5f5f5;
+}
+
+/****************/
+/* FIN DE PAGINA */
+
+/* Fin es mi "footer" - Pie de pagina. Con clear le indico que se ubique debajo de todo elemento
+  que este a izquierda y a derecha. Se alinea el texto al centro y sin decoracion */
+
+.fin {
+  left: 0;
+  right: 0;
+  margin: 0;
+  clear: both;
+  position: block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #009bcc;
+  height: 40px;
+  font-size: 75%;
+}
+
+/* En el fin de pagina, el color del texto es blanco*/
+.fin p {
+  color: white;
+}
+
+/*Los enlaces estaran sin decoracion en el fin de pagina*/
+.fin a {
+  color: white;
+  text-decoration: none;
+}
+
+#sitemap {
+  height: 100%;
+  width: 100%;
+  margin: 0px auto;
+  left: 20px;
+  right: 20px;
+}
+
+
+/**************************/
+/* PAGINA EN PANTALLA MENOR A 480px DE ANCHO */
+
+@media screen and (max-width: 480px) {
+
+    /*Cada bloque pasa a formar una columa en una pantalla con esa resolucion */
+    .bloque{
+    	width: 100%;
+    	height: 100%;
+    	left:0;
+    }
+
+    /* La barra de navegacion no se quedara estatica, 
+    sino que se movera con los demas elementos*/
+    .navegacion{
+      position: static;
+    }
+
+    .navegacion ul {
+    	position: inline;
+    	background-color: #00afe6;
+    	text-decoration: none;
+    	list-style: none;
+    }
+
+    .navegacion li a {
+      font-size: 0;
+      padding-right: 0px;
+      padding: 0;
+      margin: 10;
+      font-size: 75%;
+    }
+
+    /* Se cambia el padding */
+    .navegacion li {
+      padding-right: 30px;
+    }
+
+    /* Como la barra de navegacion se mueve con los demas elementos
+    grupo no tiene un margin-top.*/
+    .grupo{
+    	margin-top: 0;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    /* Disminuyo el ancho del bloque para que se adapte mas facil */
+    .bloque {
+      width: 280px;
+    }
+
+    /* Se reune acerca de con el resto de los elementos de la lista de navegacion*/
+    #acercade {
+      float: left;
+    }
+
+    /* Se reduce el contenedor de la presentacion de imagenes*/
+    .contenedor {
+      width: 280px;
+    }
+}
+
+
+/* Se realiza un par de adaptaciones cuando el alto de la pagina es maximo 460px*/
+@media screen and (max-height: 480px) {
+  /* La barra de navegacion cambia a estatico*/
+   .navegacion{
+      position: static;
+    }
+
+    /* Grupo cambia de margen, debido a la barra de navegacion*/
+    .grupo{
+      margin-top: 0;
+    }
+
+}
