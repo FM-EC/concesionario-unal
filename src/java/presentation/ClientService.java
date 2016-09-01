@@ -5,7 +5,7 @@
  */
 package presentation;
 
-import businessLogic.ProviderFacadeLocal;
+import businessLogic.ClientFacadeLocal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -17,25 +17,25 @@ import javax.faces.bean.ManagedBean;
  *
  * @author FABIAN
  */
-@ManagedBean(name="providerService", eager = true)
+@ManagedBean(name="clientService", eager = true)
 @ApplicationScoped
-public class ProviderService {
+public class ClientService {
      
-    private List<Proveedor> providers;
+    private List<Cliente> clients;
     @EJB
-    private ProviderFacadeLocal lista;
+    private ClientFacadeLocal lista;
     int index = 0;
     @PostConstruct
     public void init() {
-        providers = new ArrayList<Proveedor>();
+        clients = new ArrayList<Cliente>();
         
         lista.findAll().forEach((it) ->{
-            providers.add(new Proveedor(index++, it.getCompanyName(), it.getCompanyName(),it));
+            clients.add(new Cliente(index++, it.getEmail(), it.getEmail(), it));
         });
         index = 0;
     }
      
-    public List<Proveedor> getProviders() {
-        return providers;
+    public List<Cliente> getClients() {
+        return clients;
     } 
 }

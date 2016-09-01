@@ -6,6 +6,8 @@
 package businessLogic;
 
 import dataAccess.Client;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,6 +26,19 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     protected EntityManager getEntityManager() {
         return em;
     }
+
+    @Override
+    public List<Client> findAll() {
+        List<Client> clients = new ArrayList<>();
+        try {
+            clients = em.createNamedQuery("Client.findAll", Client.class).getResultList();
+        } catch (Exception e) {
+            em.close();
+        }
+        return clients;
+    }
+    
+    
 
     public ClientFacade() {
         super(Client.class);

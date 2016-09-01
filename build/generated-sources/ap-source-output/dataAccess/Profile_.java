@@ -9,7 +9,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-08-28T17:43:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-09-01T11:22:53")
 @StaticMetamodel(Profile.class)
 public class Profile_ { 
 
@@ -19,6 +19,7 @@ public class Profile_ {
     public static volatile SingularAttribute<Profile, String> address;
     public static volatile SingularAttribute<Profile, String> phone;
     public static volatile SingularAttribute<Profile, String> city;
+    public static volatile SingularAttribute<Profile, String> idCard;
     public static volatile CollectionAttribute<Profile, Purchases> purchasesCollection;
     public static volatile SingularAttribute<Profile, String> name;
     public static volatile CollectionAttribute<Profile, Roles> rolesCollection;

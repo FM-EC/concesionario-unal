@@ -32,4 +32,5 @@ public interface AuthenticationFacadeLocal {
 
     int count();
     
+    String createAuth(String theEmail, String theUsername, String thePassword, Integer theId);
 }

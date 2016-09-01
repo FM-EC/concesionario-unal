@@ -8,6 +8,7 @@ package businessLogic;
 import dataAccess.Cars;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,9 +21,14 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class CarsFacade extends AbstractFacade<Cars> implements CarsFacadeLocal {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("concesionarioPU");
+    
     @PersistenceContext(unitName = "concesionarioPU")
     private EntityManager em;
+    
+    @PreDestroy
+    public void knockdown(){
+        em.close();
+    }
     
     @Override
     protected EntityManager getEntityManager() {
@@ -42,18 +48,14 @@ public class CarsFacade extends AbstractFacade<Cars> implements CarsFacadeLocal 
 
     @Override
     public List<Cars> findAll() {
-        EntityManager em = emf.createEntityManager();
-        List <Cars> cars= new ArrayList<>();
+        List<Cars> cars= new ArrayList<>();
         try {
-            cars = em.createNamedQuery("Cars.findAll").getResultList();
+            cars = em.createNamedQuery("Cars.findAll", Cars.class).getResultList();
         } catch (Exception e) {
             em.close();
-        } finally {
-            em.close();
-        }
+        } 
         return cars;
-        //return dao.findAll();
-     
+            
     }
 
     public CarsFacade() {

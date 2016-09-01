@@ -25,9 +25,47 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
         return em;
     }
     
+    
+     public String createAuth(String theEmail, String theUsername, String thePass, Integer theId)
+    {
+        java.util.Date dt = new java.util.Date();
+
+        java.text.SimpleDateFormat sdf = 
+             new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String currentTime = sdf.format(dt);
+        Authentication theAuth = new Authentication();
+        theAuth.setIdUser(theId);
+        theAuth.setEmail(theEmail);
+        theAuth.setPassword(thePass);
+        theAuth.setUsername(theUsername);
+        theAuth.setLastAccess(dt);
+        
+        System.out.println(theAuth.getEmail() + theAuth.getIdUser());
+        em.clear();
+        try{em.persist(theAuth);
+        }
+        catch(Exception e)
+        {System.out.println(e);}
+        
+        
+       /* em.getTransaction().begin();
+        try {
+            em.persist(theAuth);
+            em.getTransaction().commit();
+        } catch(Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }*/
+        return theAuth.getEmail();
+    }
+     
     @Override
     // Authenticate users function using the entity autentication
     public boolean authenticate(String email, String password){
+        System.out.println(email);
         Authentication user = getUserByEmail(email);
         if(user == null){ return false; }
         return user.getPassword().equals(password);
@@ -45,8 +83,11 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
         
     }
     
+   
     public AuthenticationFacade() {
         super(Authentication.class);
     }
+
+    
     
 }

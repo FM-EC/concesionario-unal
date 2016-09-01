@@ -5,11 +5,10 @@
         <group>
             <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/carRegisterBean.java</file>
             <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/dataAccess/Cars.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/salesRegisterBean.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/web/registroVentas.xhtml</file>
             <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/businessLogic/CarsFacadeLocal.java</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/Proveedor.java</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/web/registroCarro.xhtml</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/ProviderService.java</file>
-            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/presentation/ProviderConverter.java</file>
+            <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/web/listarCarros.xhtml</file>
             <file>file:/C:/Users/FABIAN/Documents/NetBeansProjects/concesionario/src/java/businessLogic/CarsFacade.java</file>
         </group>
     </open-files>

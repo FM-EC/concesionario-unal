@@ -8,16 +8,17 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-08-28T21:42:52")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-09-01T11:22:53")
 @StaticMetamodel(Cars.class)
 public class Cars_ { 
 
+    public static volatile SingularAttribute<Cars, Boolean> sold;
     public static volatile SingularAttribute<Cars, String> color;
     public static volatile SingularAttribute<Cars, String> engineNumber;
     public static volatile SingularAttribute<Cars, Float> salesPrice;
     public static volatile SingularAttribute<Cars, Float> purchasePrice;
     public static volatile SingularAttribute<Cars, Integer> idCar;
-    public static volatile CollectionAttribute<Cars, Sales> salesCollection;
+    public static volatile SingularAttribute<Cars, Sales> idVenta;
     public static volatile SingularAttribute<Cars, Provider> idProvider;
     public static volatile CollectionAttribute<Cars, Purchases> purchasesCollection;
     public static volatile SingularAttribute<Cars, String> chasisNumber;

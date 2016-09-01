@@ -6,6 +6,8 @@
 package businessLogic;
 
 import dataAccess.Sales;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +27,20 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
         return em;
     }
 
+    @Override
+    public List<Sales> findAll() {
+        List<Sales> cars = new ArrayList<>();
+        try {
+            cars = em.createNamedQuery("Sales.findAll").getResultList();
+        } catch (Exception e) {
+            em.close();
+        } finally {
+            em.close();
+        }
+        return cars;
+          
+    }
+ 
     public SalesFacade() {
         super(Sales.class);
     }

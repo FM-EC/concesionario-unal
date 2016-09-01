@@ -30,4 +30,6 @@ public interface ProfileFacadeLocal {
 
     int count();
     
+    Integer createProfile(String theName, String theLastName, String thePhone, String theCity, String theAddress, String theEmail);
+    
 }

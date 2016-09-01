@@ -150,6 +150,7 @@ public class carRegisterBean {
         persistCar.setPurchasePrice(Float.parseFloat(purchasePrice));
         persistCar.setSalesPrice(Float.parseFloat(salesPrice));
         persistCar.setTransmissionType(transmissionType);
+        persistCar.setSold(false);
         
         if(car.createCar(persistCar)){
             return "welcome";

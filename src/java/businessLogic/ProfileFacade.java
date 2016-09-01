@@ -24,6 +24,53 @@ public class ProfileFacade extends AbstractFacade<Profile> implements ProfileFac
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+
+    public Integer createProfile(String theName, String theLastName, String thePhone, String theCity, String theAddress, String theEmail)
+    {
+        Profile theProfile = new Profile();
+        theProfile.setName(theName);
+        theProfile.setLastName(theLastName);
+        theProfile.setPhone(thePhone);
+        theProfile.setAddress(theAddress);
+        theProfile.setCity(theCity);
+        
+        
+        try{em.persist(theProfile);}
+        catch (Exception e){}
+        
+        /*em.getTransaction().begin();
+        try {
+            em.persist(theProfile);
+            em.getTransaction().commit();
+        } catch(Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }*/
+        
+       // em.close();
+        //em.clear();
+    
+        Profile theProfile2 = new Profile();
+        theProfile2 = getProfbyName(theName);
+        
+        
+        return theProfile2.getIdUser();
+    }
+    
+ 
+   public Profile getProfbyName(String name)
+    {
+        try {
+            return em.createNamedQuery("Profile.findByName", Profile.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public ProfileFacade() {
         super(Profile.class);

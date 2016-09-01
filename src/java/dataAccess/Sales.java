@@ -6,6 +6,7 @@
 package dataAccess;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,12 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,7 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s"),
     @NamedQuery(name = "Sales.findByIdSales", query = "SELECT s FROM Sales s WHERE s.idSales = :idSales"),
     @NamedQuery(name = "Sales.findByTotalValue", query = "SELECT s FROM Sales s WHERE s.totalValue = :totalValue"),
-    @NamedQuery(name = "Sales.findByQty", query = "SELECT s FROM Sales s WHERE s.qty = :qty"),
     @NamedQuery(name = "Sales.findBySaleType", query = "SELECT s FROM Sales s WHERE s.saleType = :saleType"),
     @NamedQuery(name = "Sales.findBySaleDate", query = "SELECT s FROM Sales s WHERE s.saleDate = :saleDate")})
 public class Sales implements Serializable {
@@ -48,11 +50,6 @@ public class Sales implements Serializable {
     @NotNull
     @Column(name = "totalValue")
     private float totalValue;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "qty")
-    private String qty;
     @Size(max = 45)
     @Column(name = "saleType")
     private String saleType;
@@ -61,9 +58,8 @@ public class Sales implements Serializable {
     @Column(name = "saleDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date saleDate;
-    @JoinColumn(name = "idCar", referencedColumnName = "idCar")
-    @ManyToOne(optional = false)
-    private Cars idCar;
+    @OneToMany(mappedBy = "idVenta")
+    private Collection<Cars> carsCollection;
     @JoinColumn(name = "idClient", referencedColumnName = "idClient")
     @ManyToOne(optional = false)
     private Client idClient;
@@ -78,10 +74,9 @@ public class Sales implements Serializable {
         this.idSales = idSales;
     }
 
-    public Sales(Integer idSales, float totalValue, String qty, Date saleDate) {
+    public Sales(Integer idSales, float totalValue, Date saleDate) {
         this.idSales = idSales;
         this.totalValue = totalValue;
-        this.qty = qty;
         this.saleDate = saleDate;
     }
 
@@ -101,14 +96,6 @@ public class Sales implements Serializable {
         this.totalValue = totalValue;
     }
 
-    public String getQty() {
-        return qty;
-    }
-
-    public void setQty(String qty) {
-        this.qty = qty;
-    }
-
     public String getSaleType() {
         return saleType;
     }
@@ -125,12 +112,13 @@ public class Sales implements Serializable {
         this.saleDate = saleDate;
     }
 
-    public Cars getIdCar() {
-        return idCar;
+    @XmlTransient
+    public Collection<Cars> getCarsCollection() {
+        return carsCollection;
     }
 
-    public void setIdCar(Cars idCar) {
-        this.idCar = idCar;
+    public void setCarsCollection(Collection<Cars> carsCollection) {
+        this.carsCollection = carsCollection;
     }
 
     public Client getIdClient() {

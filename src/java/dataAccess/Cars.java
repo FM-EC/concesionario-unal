@@ -43,7 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cars.findByCarriagePlate", query = "SELECT c FROM Cars c WHERE c.carriagePlate = :carriagePlate"),
     @NamedQuery(name = "Cars.findByTransmissionType", query = "SELECT c FROM Cars c WHERE c.transmissionType = :transmissionType"),
     @NamedQuery(name = "Cars.findByChasisNumber", query = "SELECT c FROM Cars c WHERE c.chasisNumber = :chasisNumber"),
-    @NamedQuery(name = "Cars.findByEngineNumber", query = "SELECT c FROM Cars c WHERE c.engineNumber = :engineNumber")})
+    @NamedQuery(name = "Cars.findByEngineNumber", query = "SELECT c FROM Cars c WHERE c.engineNumber = :engineNumber"),
+    @NamedQuery(name = "Cars.findBySold", query = "SELECT c FROM Cars c WHERE c.sold = :sold")})
 public class Cars implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -95,13 +96,16 @@ public class Cars implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "engineNumber")
     private String engineNumber;
+    @Column(name = "sold")
+    private Boolean sold;
     @JoinColumn(name = "idProvider", referencedColumnName = "idProvider")
     @ManyToOne(optional = false)
     private Provider idProvider;
+    @JoinColumn(name = "idVenta", referencedColumnName = "idSales")
+    @ManyToOne
+    private Sales idVenta;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCar")
     private Collection<Purchases> purchasesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCar")
-    private Collection<Sales> salesCollection;
 
     public Cars() {
     }
@@ -203,12 +207,28 @@ public class Cars implements Serializable {
         this.engineNumber = engineNumber;
     }
 
+    public Boolean getSold() {
+        return sold;
+    }
+
+    public void setSold(Boolean sold) {
+        this.sold = sold;
+    }
+
     public Provider getIdProvider() {
         return idProvider;
     }
 
     public void setIdProvider(Provider idProvider) {
         this.idProvider = idProvider;
+    }
+
+    public Sales getIdVenta() {
+        return idVenta;
+    }
+
+    public void setIdVenta(Sales idVenta) {
+        this.idVenta = idVenta;
     }
 
     @XmlTransient
@@ -218,15 +238,6 @@ public class Cars implements Serializable {
 
     public void setPurchasesCollection(Collection<Purchases> purchasesCollection) {
         this.purchasesCollection = purchasesCollection;
-    }
-
-    @XmlTransient
-    public Collection<Sales> getSalesCollection() {
-        return salesCollection;
-    }
-
-    public void setSalesCollection(Collection<Sales> salesCollection) {
-        this.salesCollection = salesCollection;
     }
 
     @Override

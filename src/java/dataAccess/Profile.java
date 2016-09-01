@@ -41,6 +41,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Profile.findByCity", query = "SELECT p FROM Profile p WHERE p.city = :city")})
 public class Profile implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 15)
+    @Column(name = "idCard")
+    private String idCard;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -204,6 +210,14 @@ public class Profile implements Serializable {
     @Override
     public String toString() {
         return "dataAccess.Profile[ idUser=" + idUser + " ]";
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
     
 }
