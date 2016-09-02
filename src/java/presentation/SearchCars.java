@@ -7,10 +7,11 @@ package presentation;
 
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-import businessLogic.CarsFacade;
+import businessLogic.CarsFacadeLocal;
 import dataAccess.Cars;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 
 
 /**
@@ -20,7 +21,9 @@ import java.util.List;
 @Named(value = "searchCars")
 @Dependent
 public class SearchCars {
-    private CarsFacade ejb = new CarsFacade();
+    @EJB 
+    private CarsFacadeLocal ejb;
+   // private CarsFacade ejb = new CarsFacade();
     /**
      * Creates a new instance of SearchCars
      */

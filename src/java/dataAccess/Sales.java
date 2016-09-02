@@ -6,24 +6,23 @@
 package dataAccess;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -42,8 +41,8 @@ public class Sales implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idSales")
     private Integer idSales;
     @Basic(optional = false)
@@ -58,8 +57,6 @@ public class Sales implements Serializable {
     @Column(name = "saleDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date saleDate;
-    @OneToMany(mappedBy = "idVenta")
-    private Collection<Cars> carsCollection;
     @JoinColumn(name = "idClient", referencedColumnName = "idClient")
     @ManyToOne(optional = false)
     private Client idClient;
@@ -110,15 +107,6 @@ public class Sales implements Serializable {
 
     public void setSaleDate(Date saleDate) {
         this.saleDate = saleDate;
-    }
-
-    @XmlTransient
-    public Collection<Cars> getCarsCollection() {
-        return carsCollection;
-    }
-
-    public void setCarsCollection(Collection<Cars> carsCollection) {
-        this.carsCollection = carsCollection;
     }
 
     public Client getIdClient() {

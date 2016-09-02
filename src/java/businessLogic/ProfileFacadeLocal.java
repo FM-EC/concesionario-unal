@@ -23,6 +23,8 @@ public interface ProfileFacadeLocal {
     void remove(Profile profile);
 
     Profile find(Object id);
+    
+    Profile findById(int id);
 
     List<Profile> findAll();
 

@@ -17,75 +17,76 @@
                     <p:panel header="Seleccione los carros que desea comprar">
                         <p:messages />
                         <h:panelGrid columns="2" columnClasses="label, value">
+                            <p:scrollPanel mode="native" style="width:100%;height:500px; text-align: center;" >
                             <h:dataTable value="#{salesRegisterBean.getCars()}" var="item">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Comprar Carro"/>
-                                    </f:facet>
-                                    <p:selectBooleanCheckbox value="#{item.sold}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Código"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idCar}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Marca"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.brand}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Precio de venta"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.salesPrice}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Precio de compra"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.purchasePrice}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Modelo"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.model}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Color"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.color}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Placa"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.carriagePlate}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Tipo de transmisión"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.transmissionType}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Número de chasis"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.chasisNumber}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Número de motor"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.engineNumber}"/>
-                                </h:column>
-
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Comprar Carro"/>
+                                        </f:facet>
+                                        <p:selectBooleanCheckbox value="#{item.sold}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Código"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idCar}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Marca"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.brand}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Precio de venta"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.salesPrice}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Precio de compra"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.purchasePrice}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Modelo"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.model}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Color"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.color}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Placa"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.carriagePlate}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Tipo de transmisión"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.transmissionType}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Número de chasis"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.chasisNumber}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Número de motor"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.engineNumber}"/>
+                                    </h:column>
                             </h:dataTable>
+                            </p:scrollPanel>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -192,6 +193,10 @@
                         <p:separator />
                         <p:outputLabel for="valorTotalConfirm" value="Valor Total:" />
                         <h:outputText id="valorTotalConfirm" value="#{salesRegisterBean.calcularValorTotal()}"/>
+                        <br></br>
+                        <p:separator />
+                        <p:messages id="messages"></p:messages>
+                        <p:commandButton value="Registrar Venta" id="registrar" update="messages" type="submit" action="#{salesRegisterBean.registrarCarro}"/>
                     </p:panel>
                 </p:tab>
             </p:wizard>

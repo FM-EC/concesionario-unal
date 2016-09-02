@@ -19,6 +19,7 @@
                 <li><h:link outcome="registroCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/City/car_theft-24.png" title="Car Theft" width="24"></img><br></br>Registrar Carro</h:link></li>
                 <li><h:link outcome="modificarCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Industry/automotive-24.png" title="Automotive" width="24"></img><br></br>Modificar Carro</h:link></li>
                 <li><h:link outcome="listarCarros" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/show_property-24.png" title="Show Property" width="24"></img><br></br>Listar Carros</h:link></li>
+                <li><h:link outcome="registroVentas" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/show_property-24.png" title="Show Property" width="24"></img><br></br>Registrar venta</h:link></li>
                 <li id="acercade"><h:link outcome="registro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Users/add_user_male-24.png" title="Add User Male" width="24"></img><br></br>Registro</h:link></li>
                 <li id="acercade"><h:link outcome="login" ><img src="https://maxcdn.icons8.com/Color/PNG/24/User_Interface/enter_2-24.png" title="Enter" width="24"></img><br></br>Ingresar</h:link></li>
             </ul>
@@ -29,74 +30,39 @@
             <p>¡Los mejores vehiculos a tu disposición!</p>
             <hr></hr>
         </div>
-        <f:view>
+
+        <f:view>                   
             <h:form>
                 <h1><h:outputText value="Vehículos disponibles"/></h1>
-                <h:dataTable value="#{searchCars.findAll()}" var="item">
-                    <h:column>
+
+
+
+                <p:dataTable var="car" value="#{searchCars.findAll()}" paginator="true" rows="10" id="carTable" lazy="true">
+
+                    <p:column headerText="Id" sortBy="#{car.idCar}" filterBy="#{car.idCar}">
+                        <h:outputText value="#{car.idCar}" />
+                    </p:column>
+
+                    <p:column headerText="Marca">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
+
+
+
+
+
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Código"/>
+                            <h:outputText value="" />
                         </f:facet>
-                        <h:outputText value="#{item.idCar}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Marca"/>
-                        </f:facet>
-                        <h:outputText value="#{item.brand}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Precio de venta"/>
-                        </f:facet>
-                        <h:outputText value="#{item.salesPrice}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Precio de compra"/>
-                        </f:facet>
-                        <h:outputText value="#{item.purchasePrice}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Modelo"/>
-                        </f:facet>
-                        <h:outputText value="#{item.model}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color"/>
-                        </f:facet>
-                        <h:outputText value="#{item.color}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Placa"/>
-                        </f:facet>
-                        <h:outputText value="#{item.carriagePlate}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Tipo de transmisión"/>
-                        </f:facet>
-                        <h:outputText value="#{item.transmissionType}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Número de chasis"/>
-                        </f:facet>
-                        <h:outputText value="#{item.chasisNumber}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Número de motor"/>
-                        </f:facet>
-                        <h:outputText value="#{item.engineNumber}"/>
-                    </h:column>
-                   
-                </h:dataTable>
+                        <p:commandButton icon="ui-icon-close" title="remove from cart"
+                                         actionListener="#{carRegisterBean.deleteCar(car)}" update="carTable" />
+                    </p:column>
+                </p:dataTable>
+
             </h:form>
         </f:view>
     </h:body>
 </html>
+
 

@@ -41,6 +41,17 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
           
     }
  
+    @Override
+    public Sales createSale(Sales entity) {
+        try {
+            em.persist(entity);
+            return entity;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public SalesFacade() {
         super(Sales.class);
     }

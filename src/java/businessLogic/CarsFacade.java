@@ -57,9 +57,23 @@ public class CarsFacade extends AbstractFacade<Cars> implements CarsFacadeLocal 
         return cars;
             
     }
-
+    
+    @Override
+    public boolean createCars(List<Cars> cars) {
+        cars.forEach((it)->{
+            try {
+                em.merge(it);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        return true;
+    }
+    
     public CarsFacade() {
         super(Cars.class);
     }
+
+    
     
 }

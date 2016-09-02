@@ -23,6 +23,8 @@ public interface SalesFacadeLocal {
     void remove(Sales sales);
 
     Sales find(Object id);
+    
+    public Sales createSale(Sales entity);
 
     List<Sales> findAll();
 

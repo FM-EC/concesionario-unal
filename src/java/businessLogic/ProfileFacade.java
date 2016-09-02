@@ -75,5 +75,16 @@ public class ProfileFacade extends AbstractFacade<Profile> implements ProfileFac
     public ProfileFacade() {
         super(Profile.class);
     }
+
+    @Override
+    public Profile findById(int id) {
+        try {
+            return em.createNamedQuery("Profile.findByIdUser", Profile.class)
+                    .setParameter("idUser", id)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
 }

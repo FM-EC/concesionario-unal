@@ -6,7 +6,10 @@
 package presentation;
 
 import businessLogic.CarsFacadeLocal;
+import businessLogic.ProfileFacadeLocal;
+import businessLogic.SalesFacadeLocal;
 import dataAccess.Cars;
+import dataAccess.Profile;
 import dataAccess.Sales;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,12 +33,17 @@ public class salesRegisterBean {
     private Date date;
     @EJB
     private CarsFacadeLocal ejb;
+    @EJB
+    private SalesFacadeLocal sales;
+    @EJB
+    private ProfileFacadeLocal user;
     private List<Cars> cars;
     private List<Cars> selectedCars;
     private Cliente cliente;
     private List<Cliente> clientes;
     private float valorTotal;
     private String PaymentType;
+    
 
     /**
      * Creates a new instance of salesRegisterBean
@@ -70,7 +78,12 @@ public class salesRegisterBean {
     }
 
     public List<Cars> getCars() {
-        cars = ejb.findAll();
+        cars = new ArrayList<Cars>();
+        ejb.findAll().forEach((it)->{
+            if(!it.getSold()){
+                cars.add(it);
+            }
+        });
         return cars;
     }
     
@@ -128,16 +141,35 @@ public class salesRegisterBean {
     
     public String registrarCarro() {
         Sales persistSale = new Sales();
+        Cars PersistCar = new Cars(); 
         //FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
         persistSale.setSaleDate(date);
         persistSale.setTotalValue(valorTotal);
         persistSale.setSaleType(PaymentType);
         persistSale.setIdClient(cliente.getIdcliente());
-        //persistSale.setIdUser(idUser);
-        persistSale.setCarsCollection(selectedCars);
         
-
-        return null;
+        Profile idUser = user.findById(1);
+        persistSale.setIdUser(idUser);
+        
+        //persistSale.setCarsCollection(selectedCars);
+        
+        Sales sale = sales.createSale(persistSale);
+        
+        selectedCars.forEach((it)->{
+            it.setIdVenta(sale);
+            it.setSold(true);
+        });
+        
+        if(ejb.createCars(selectedCars)){
+          return "welcome";
+        }else{
+          return null;
+        }
+            
+        
+            
+        
+        
     }
     
     

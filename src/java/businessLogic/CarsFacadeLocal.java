@@ -20,6 +20,8 @@ public interface CarsFacadeLocal {
     
     boolean createCar(Cars cars);
     
+    boolean createCars(List<Cars> cars);
+    
     void edit(Cars cars);
 
     void remove(Cars cars);

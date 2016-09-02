@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -19,6 +21,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ClientFacade extends AbstractFacade<Client> implements ClientFacadeLocal {
 
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("concesionarioPU");
     @PersistenceContext(unitName = "concesionarioPU")
     private EntityManager em;
 
