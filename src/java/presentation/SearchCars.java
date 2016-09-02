@@ -20,7 +20,8 @@ import java.util.List;
 @Named(value = "searchCars")
 @Dependent
 public class SearchCars {
-    private CarsFacade ejb = new CarsFacade();
+    @EJB 
+    private CarsFacadeLocal ejb;
     /**
      * Creates a new instance of SearchCars
      */
