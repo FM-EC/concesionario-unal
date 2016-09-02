@@ -23,7 +23,10 @@ import javax.ejb.EJB;
 public class SearchCars {
     @EJB 
     private CarsFacadeLocal ejb;
+<<<<<<< HEAD
    // private CarsFacade ejb = new CarsFacade();
+=======
+>>>>>>> 4017c9f47d0f522f687531c7bee385603d33f3b8
     /**
      * Creates a new instance of SearchCars
      */
