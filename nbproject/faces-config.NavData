@@ -5,6 +5,7 @@
         <Node id="public/graficasPorMes.xhtml" x="666" y="61" zoom="true"/>
         <Node id="Administrador/registroCarro.xhtml" x="526" y="506" zoom="true"/>
         <Node id="index.xhtml" x="37" y="245" zoom="true"/>
+        <Node id="Vendedor/listarCarros.xhtml" x="904" y="19" zoom="true"/>
         <Node id="Administrador/modificarCarro.xhtml" x="150" y="300" zoom="true"/>
         <Node id="Administrador/registro.xhtml" x="249" y="53" zoom="true"/>
         <Node id="public/estadisticas.xhtml" x="551" y="188" zoom="true"/>
@@ -12,7 +13,7 @@
         <Node id="public/error.xhtml" x="1150" y="150" zoom="true"/>
         <Node id="successfulRegister.xhtml" x="843" y="428" zoom="true"/>
         <Node id="public/registroVentas.xhtml" x="420" y="130" zoom="true"/>
-        <Node id="Vendedor/seller.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="Vendedor/seller.xhtml" x="847" y="169" zoom="true"/>
         <Node id="Administrador/listarCarros.xhtml" x="584" y="291" zoom="true"/>
         <Node id="public/login.xhtml" x="397" y="391" zoom="true"/>
         <Node id="Administrador/admin.xhtml" x="150" y="450" zoom="true"/>

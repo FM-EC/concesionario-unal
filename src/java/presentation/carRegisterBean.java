@@ -153,7 +153,7 @@ public class carRegisterBean {
         persistCar.setSold(false);
         
         if(car.createCar(persistCar)){
-            return "welcome";
+            return "admin";
         }
         
         return null;

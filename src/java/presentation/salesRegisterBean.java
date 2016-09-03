@@ -26,7 +26,7 @@ import org.primefaces.event.FlowEvent;
  *
  * @author FABIAN
  */
-@Named(value = "salesRegisterBean")
+@ManagedBean
 @ViewScoped
 public class salesRegisterBean {
     
@@ -78,7 +78,7 @@ public class salesRegisterBean {
     }
 
     public List<Cars> getCars() {
-        cars = new ArrayList<Cars>();
+        cars = new ArrayList<>();
         ejb.findAll().forEach((it)->{
             if(!it.getSold()){
                 cars.add(it);
@@ -161,7 +161,7 @@ public class salesRegisterBean {
         });
         
         if(ejb.createCars(selectedCars)){
-          return "welcome";
+          return "seller";
         }else{
           return null;
         }

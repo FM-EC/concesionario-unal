@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Inventario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="../styles/style.css" type="text/css"></link>
+    </h:head>
+    <h:body>
+        <nav id="navegacion">
+            <div id="titulo">
+                <h1>AutUNAL</h1>
+            </div>
+            <ul>
+                
+                <li><h:link outcome="seller"><img src="https://maxcdn.icons8.com/Color/PNG/24/Transport/convertible-24.png" title="Convertible" width="24"></img><br></br>Inicio</h:link></li>
+                
+                              
+            </ul>
+        </nav>  
+        <br></br>
+        <div class="encabezado">
+            <hr></hr>
+            <p>¡Los mejores vehiculos a tu disposición!</p>
+            <hr></hr>
+        </div>
+        <f:view>
+
+
+            <h:form>
+
+                <p:dataTable value="#{searchCars.findAll()}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdCar"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idCar}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Brand"/>
+                        </f:facet>
+                        <h:outputText value="#{item.brand}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="SalesPrice"/>
+                        </f:facet>
+                        <h:outputText value="#{item.salesPrice}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="PurchasePrice"/>
+                        </f:facet>
+                        <h:outputText value="#{item.purchasePrice}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model"/>
+                        </f:facet>
+                        <h:outputText value="#{item.model}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Color"/>
+                        </f:facet>
+                        <h:outputText value="#{item.color}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="CarriagePlate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.carriagePlate}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TransmissionType"/>
+                        </f:facet>
+                        <h:outputText value="#{item.transmissionType}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="ChasisNumber"/>
+                        </f:facet>
+                        <h:outputText value="#{item.chasisNumber}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="EngineNumber"/>
+                        </f:facet>
+                        <h:outputText value="#{item.engineNumber}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Sold"/>
+                        </f:facet>
+                        <h:outputText value="#{item.sold}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdProvider"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idProvider}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdVenta"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idVenta}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </f:view>
+    </h:body>
+</html>
+
