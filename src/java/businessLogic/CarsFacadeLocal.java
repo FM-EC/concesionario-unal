@@ -34,4 +34,8 @@ public interface CarsFacadeLocal {
 
     int count();
     
+    public boolean update(String theCariagePlate, float thesalePrice);
+   
+    public Cars getTheCar(String theCarriage);
+    
 }

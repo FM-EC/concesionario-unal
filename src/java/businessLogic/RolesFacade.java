@@ -25,7 +25,36 @@ public class RolesFacade extends AbstractFacade<Roles> implements RolesFacadeLoc
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    public String createRole(Integer theId, String theChosenRole, Profile theProf)
+    {
+        
+        //Profile theProfile = new Profile();
+        //ProfileFacade pf = new ProfileFacade();
+        //theProfile = pf.findById(theId);
+        Roles theRole = new Roles();
+        if(theProf == null)
+        {
+            System.out.println("perfil nulo");
+        }
+        //System.out.println("en roles: profname " + theProfile.getName());
+        //if(theProfile != null)
+        //{
+            
+            theRole.setIdUser(theProf);
+            theRole.setRoleName(theChosenRole);
 
+            try{
+                em.persist(theRole);
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        //}
+        
+        return theRole.getRoleName();
+    }
+    
     public RolesFacade() {
         super(Roles.class);
     }

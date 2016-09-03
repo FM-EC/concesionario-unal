@@ -69,6 +69,29 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
         
     }
     
+    public Sales findByIdSales(int theId)
+    {
+        Sales theSale = new Sales();
+        try{
+            theSale = em.createNamedQuery("Sales.findByIdSales", Sales.class).setParameter("idSales", theId).getSingleResult();
+        }catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return theSale;
+    }
+    
+    public float getCommission(int theId)
+    {
+        Sales mySale = new Sales();
+        mySale = findByIdSales(theId);
+        
+        float theTotalValue = mySale.getTotalValue();
+        return (float) (theTotalValue*0.1);
+        
+    }
+    
+    
     public SalesFacade() {
         super(Sales.class);
     }

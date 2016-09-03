@@ -8,6 +8,7 @@ package presentation;
 import businessLogic.CarsFacadeLocal;
 import businessLogic.ProfileFacadeLocal;
 import businessLogic.SalesFacadeLocal;
+import businessLogic.sessionManagement.SessionUtils;
 import dataAccess.Cars;
 import dataAccess.Profile;
 import dataAccess.Sales;
@@ -20,6 +21,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import org.primefaces.event.FlowEvent;
 
 /**
@@ -148,7 +150,10 @@ public class salesRegisterBean {
         persistSale.setSaleType(PaymentType);
         persistSale.setIdClient(cliente.getIdcliente());
         
-        Profile idUser = user.findById(1);
+        HttpSession session = SessionUtils.getSession();
+        int theUserId = (int)  session.getAttribute("idUser");
+         
+        Profile idUser = user.findById(theUserId);
         persistSale.setIdUser(idUser);
         
         //persistSale.setCarsCollection(selectedCars);

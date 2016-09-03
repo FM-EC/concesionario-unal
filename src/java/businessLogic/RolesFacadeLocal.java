@@ -29,6 +29,8 @@ public interface RolesFacadeLocal {
 
     List<Roles> findRange(int[] range);
 
+    String createRole(Integer theId, String theRole,  Profile theProf);
+    
     int count();
     
     Roles findByUserId(Profile prof);
