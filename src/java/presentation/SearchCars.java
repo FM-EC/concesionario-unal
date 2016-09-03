@@ -8,9 +8,11 @@ package presentation;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import businessLogic.CarsFacade;
+import businessLogic.CarsFacadeLocal;
 import dataAccess.Cars;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 
 
 /**
@@ -20,7 +22,9 @@ import java.util.List;
 @Named(value = "searchCars")
 @Dependent
 public class SearchCars {
-    private CarsFacade ejb = new CarsFacade();
+    @EJB
+    private CarsFacadeLocal ejb;
+
     /**
      * Creates a new instance of SearchCars
      */
@@ -28,11 +32,10 @@ public class SearchCars {
     }
     
     public List <Cars> findAll(){
+
         List <Cars> cars= new ArrayList<>();
         cars= ejb.findAll();
-        for (Cars  c: cars){
-            System.out.println(c.toString());
-        }
-        return cars;
+        
+       return cars;
     }
 }

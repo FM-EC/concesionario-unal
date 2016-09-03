@@ -5,6 +5,7 @@
  */
 package businessLogic;
 
+import dataAccess.Roles;
 import dataAccess.Sales;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +41,9 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
         return cars;
           
     }
- 
+     
     public SalesFacade() {
         super(Sales.class);
     }
-    
+      
 }

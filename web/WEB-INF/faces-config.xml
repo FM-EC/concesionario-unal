@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/public/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/public/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Administrador</from-outcome>
+            <to-view-id>/Administrador/admin.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Administrador/admin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>registroCarro</from-outcome>
+            <to-view-id>/Administrador/registroCarro.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modificarCarro</from-outcome>
+            <to-view-id>/Administrador/modificarCarro.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listarCarros</from-outcome>
+            <to-view-id>/Administrador/listarCarros.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>registroUsuario</from-outcome>
+            <to-view-id>/Administrador/registro.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
