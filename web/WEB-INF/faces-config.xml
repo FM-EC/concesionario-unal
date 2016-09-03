@@ -10,6 +10,7 @@
         <navigation-case>
             <from-outcome>index</from-outcome>
             <to-view-id>index.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     
@@ -18,14 +19,17 @@
         <navigation-case>
             <from-outcome>login</from-outcome>
             <to-view-id>/public/login.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
             <from-outcome>estadisticas</from-outcome>
             <to-view-id>/public/estadisticas.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
             <from-outcome>registroVentas</from-outcome>
             <to-view-id>/public/registroVentas.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -38,6 +42,7 @@
         <navigation-case>
             <from-outcome>Vendedor</from-outcome>
             <to-view-id>/Vendedor/seller.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -45,18 +50,22 @@
         <navigation-case>
             <from-outcome>registroCarro</from-outcome>
             <to-view-id>/Administrador/registroCarro.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
             <from-outcome>modificarCarro</from-outcome>
             <to-view-id>/Administrador/modificarCarro.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
             <from-outcome>listarCarros</from-outcome>
             <to-view-id>/Administrador/listarCarros.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
             <from-outcome>registroUsuario</from-outcome>
             <to-view-id>/Administrador/registro.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -64,6 +73,7 @@
         <navigation-case>
             <from-outcome>listarCarros</from-outcome>
             <to-view-id>/Vendedor/listarCarros.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
 </faces-config>
