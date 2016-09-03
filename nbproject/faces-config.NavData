@@ -2,7 +2,6 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="public/graficasPorMes.xhtml" x="666" y="61" zoom="true"/>
         <Node id="Administrador/registroCarro.xhtml" x="526" y="506" zoom="true"/>
         <Node id="index.xhtml" x="37" y="245" zoom="true"/>
         <Node id="Vendedor/listarCarros.xhtml" x="904" y="19" zoom="true"/>

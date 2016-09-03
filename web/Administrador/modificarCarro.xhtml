@@ -6,26 +6,17 @@ and open the template in the editor.
 -->
 <!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Modificar Carro</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="../styles/style.css" type="text/css"></link>
     </h:head>
     <h:body>
-        <nav id="navegacion">
-            <div id="titulo">
-                <h1>AutUNAL</h1>
-            </div>
-            <ul>
-                <li><h:link outcome="index"><img src="https://maxcdn.icons8.com/Color/PNG/24/Transport/convertible-24.png" title="Convertible" width="24"></img><br></br>Inicio</h:link></li>
-                <li><h:link outcome="registroCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/City/car_theft-24.png" title="Car Theft" width="24"></img><br></br>Registrar Carro</h:link></li>
-                <li><h:link outcome="actualizarCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Industry/automotive-24.png" title="Automotive" width="24"></img><br></br>Modificar Carro</h:link></li>
-                <li><h:link outcome="listarCarros" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/show_property-24.png" title="Show Property" width="24"></img><br></br>Listar Carros</h:link></li>
-                <li id="acercade"><h:link outcome="registro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Users/add_user_male-24.png" title="Add User Male" width="24"></img><br></br>Registro</h:link></li>
-                
-            </ul>
-        </nav>  
+        <ui:insert name="header" >
+            <ui:include src="headerAdmin.xhtml" />
+        </ui:insert>
         <br></br>
         <div class="encabezado">
             <hr></hr>

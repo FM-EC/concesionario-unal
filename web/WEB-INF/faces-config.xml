@@ -64,7 +64,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>registroUsuario</from-outcome>
-            <to-view-id>/Administrador/registro.xhtml</to-view-id>
+            <to-view-id>/Administrador/registroUsuario.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
