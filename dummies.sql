@@ -1,6 +1,10 @@
 -- profile --
-INSERT INTO profile (name, lastName, phone, address, city, idCard) VALUES ("pepe","gonzalez","12313123","123asdads","bogota","1203920392");
+INSERT INTO profile (name, lastName, phone, address, city, idCard) VALUES ("pepe","gonzalez","12313123","cll 20","bogota","1203920392");
+INSERT INTO profile (name, lastName, phone, address, city, idCard) VALUES ("andres","perez","12123123","cll 34","bogota","10293029308");
+
+-- authentication
 INSERT INTO authentication (idUser, password, email, username) VALUES (1,"1234","prueba@prueba.com","pepepapas");
+INSERT INTO authentication (idUser, password, email, username) VALUES (2,"1234","prueba2@prueba2.com","elperez");
 
 -- proveedores --
 INSERT INTO provider (companyName, phone, address, email) VALUES ("los coches","1234567", "cll 34", "admin@loscoches.com");
@@ -61,19 +65,19 @@ INSERT INTO client (name, lastName, email, phone, address) VALUES ("Oscar"," Vid
 
 -- ventas --
 
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (1,1,132686000,"Efectivo","2016-01-02 11:35:18");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (1,1,132686000,"Efectivo","2016-01-01 11:35:18");
 INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,132686000,"Financiado","2016-02-02 12:00:14");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (5,1,132686000,"Efectivo","2016-03-02 12:04:48");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (5,2,132686000,"Efectivo","2016-03-02 12:04:48");
 INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,132686000,"Efectivo","2016-04-02 12:20:19");
 INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (3,1,227494000,"Financiado","2016-05-02 12:29:34");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (3,1,221212000,"Efectivo","2016-09-06 13:03:40");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (2,1,123967000,"Efectivo","2016-09-07 15:12:05");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (5,1,141187000,"Efectivo","2016-09-08 15:12:17");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,198631000,"Financiado","2016-09-09 15:12:29");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (6,1,110833000,"Efectivo","2016-09-10 15:13:38");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,105975000,"Efectivo","2016-09-11 15:13:49");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (3,2,221212000,"Efectivo","2016-06-06 13:03:40");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (2,1,123967000,"Efectivo","2016-07-07 15:12:05");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (5,1,141187000,"Efectivo","2016-08-08 15:12:17");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,2,198631000,"Financiado","2016-09-09 15:12:29");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (6,1,110833000,"Efectivo","2016-10-10 15:13:38");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,105975000,"Efectivo","2016-11-11 15:13:49");
 INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (3,1,126677000,"Financiado","2016-12-02 15:13:58");
-INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,162831000,"Efectivo","2016-09-12 15:14:42");
+INSERT INTO sales (idClient, idUser, totalValue, saleType, saleDate) VALUES (4,1,162831000,"Efectivo","2016-12-12 15:14:42");
 
 -- carros --
 INSERT INTO cars (brand, salesPrice, purchasePrice, model, color, carriagePlate, transmissionType, chasisNumber, engineNumber, idProvider, sold, idVenta) VALUES ('Alfa Romeo', 50267000, 45240300,'155', 'Rojo', 'OZM000', 'Automatica','612043','552393',14, 1, 4);

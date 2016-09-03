@@ -5,6 +5,7 @@
  */
 package businessLogic;
 
+import dataAccess.Profile;
 import dataAccess.Sales;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,16 +30,15 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
 
     @Override
     public List<Sales> findAll() {
-        List<Sales> cars = new ArrayList<>();
+        List<Sales> sales = new ArrayList<>();
         try {
-            cars = em.createNamedQuery("Sales.findAll").getResultList();
+            sales = em.createNamedQuery("Sales.findAll").getResultList();
         } catch (Exception e) {
             em.close();
         } finally {
             em.close();
         }
-        return cars;
-          
+        return sales;          
     }
  
     @Override
@@ -52,8 +52,26 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
         }
     }
     
+    @Override
+    public List<Sales> findByIdUser(Profile id) {
+        List<Sales> sales = new ArrayList<>();
+        try {
+            sales = em.createNamedQuery("Sales.findByIdUser")
+                    .setParameter("idUser", id)
+                    .getResultList();
+            return sales;
+        } catch (Exception e) {
+            System.out.println(e);
+            em.close();
+            return null;
+        }
+        
+    }
+    
     public SalesFacade() {
         super(Sales.class);
     }
+
+    
     
 }

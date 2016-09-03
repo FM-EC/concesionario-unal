@@ -6,6 +6,7 @@
 package businessLogic;
 
 import dataAccess.Profile;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,9 +60,19 @@ public class ProfileFacade extends AbstractFacade<Profile> implements ProfileFac
         
         return theProfile2.getIdUser();
     }
+
+    @Override
+    public List<Profile> findAll() {
+        try {
+            return em.createNamedQuery("Profile.findAll", Profile.class).getResultList();                    
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
  
-   public Profile getProfbyName(String name)
+    
+    public Profile getProfbyName(String name)
     {
         try {
             return em.createNamedQuery("Profile.findByName", Profile.class)

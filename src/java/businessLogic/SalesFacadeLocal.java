@@ -5,6 +5,7 @@
  */
 package businessLogic;
 
+import dataAccess.Profile;
 import dataAccess.Sales;
 import java.util.List;
 import javax.ejb.Local;
@@ -27,6 +28,8 @@ public interface SalesFacadeLocal {
     public Sales createSale(Sales entity);
 
     List<Sales> findAll();
+    
+    List<Sales> findByIdUser(Profile id);
 
     List<Sales> findRange(int[] range);
 
