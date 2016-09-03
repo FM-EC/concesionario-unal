@@ -33,6 +33,10 @@ public interface SalesFacadeLocal {
 
     List<Sales> findRange(int[] range);
 
+    public Sales findByIdSales(int theId);
+     
+    public float getCommission(int theId);
+    
     int count();
     
 }

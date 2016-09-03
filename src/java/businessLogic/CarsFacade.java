@@ -58,6 +58,37 @@ public class CarsFacade extends AbstractFacade<Cars> implements CarsFacadeLocal 
             
     }
     
+     public Cars getTheCar(String theCarriage)
+    {
+        Cars myCar = getCarbyCarriagePlate(theCarriage);
+        return myCar;
+    }
+    
+    public boolean update(String theCarriagePlate, float thesalePrice)
+    {
+        Cars theCar = em.createNamedQuery("Cars.findByCarriagePlate", Cars.class)
+                    .setParameter("carriagePlate", theCarriagePlate)
+                    .getSingleResult();        
+        
+        
+        theCar.setSalesPrice(thesalePrice);
+        
+        em.merge(theCar);
+        
+        
+        return theCar.getCarriagePlate().equals(theCarriagePlate)?false:true;
+    }
+    
+    public Cars getCarbyCarriagePlate(String theCarriage){
+        try {
+            return em.createNamedQuery("Cars.findByCarriagePlate", Cars.class)
+                    .setParameter("carriagePlate", theCarriage)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     @Override
     public boolean createCars(List<Cars> cars) {
         cars.forEach((it)->{

@@ -24,14 +24,15 @@ public interface ProfileFacadeLocal {
 
     Profile find(Object id);
     
-    Profile findById(int id);
-
+    
     List<Profile> findAll();
 
     List<Profile> findRange(int[] range);
 
+    Profile findById(int id);
+    
     int count();
     
-    Integer createProfile(String theName, String theLastName, String thePhone, String theCity, String theAddress, String theEmail);
+    Integer createProfile(String theName, String theLastName, String theIdCard ,String thePhone, String theCity, String theAddress, String theEmail);
     
 }

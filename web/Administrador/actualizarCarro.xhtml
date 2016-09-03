@@ -1,12 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Welcome</title>
+        <title>Actualizar Auto</title>
         <link rel="stylesheet" href="styles/style.css" type="text/css"></link>
     </h:head>
     <h:body>
+        
         <nav id="navegacion">
             <div id="titulo">
                 <h1>AutUNAL</h1>
@@ -16,15 +19,39 @@
                 <li><h:link outcome="registroCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/City/car_theft-24.png" title="Car Theft" width="24"></img><br></br>Registrar Carro</h:link></li>
                 <li><h:link outcome="actualizarCarro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Industry/automotive-24.png" title="Automotive" width="24"></img><br></br>Modificar Carro</h:link></li>
                 <li><h:link outcome="listarCarros" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/show_property-24.png" title="Show Property" width="24"></img><br></br>Listar Carros</h:link></li>
-                <li><h:link outcome="registroVentas" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/show_property-24.png" title="Show Property" width="24"></img><br></br>Registrar venta</h:link></li>
                 <li id="acercade"><h:link outcome="registro" ><img src="https://maxcdn.icons8.com/Color/PNG/24/Users/add_user_male-24.png" title="Add User Male" width="24"></img><br></br>Registro</h:link></li>
                 <li id="acercade"><h:link outcome="login" ><img src="https://maxcdn.icons8.com/Color/PNG/24/User_Interface/enter_2-24.png" title="Enter" width="24"></img><br></br>Ingresar</h:link></li>
             </ul>
         </nav>  
         <br></br>
-        Welcome <h:outputText value="#{loginBean.email}"></h:outputText>
-        <h:link outcome="registroCarro" value=" Registrar un nuevo carro" />
-        <h:link outcome="listarCarros" value=" Listar unidades existentes" />
+        
+        <h1>Actualizar Automovil</h1>
+        
+        <br></br>
+            
+        <h3>Buscar auto</h3>
+        
+        <h:form>
+            <p:outputLabel for="carriagePlate"  value="# Placa: " />
+            <p:inputMask id="carriagePlate" value="#{updateCarBean.theCarriagePlate}" mask="aaa999" required="true"/>
+
+            <p:messages id="messages"></p:messages>
+            <p:commandButton value="Buscar" id="buscar" update="messages" type="submit" action="#{updateCarBean.fillTheCar()}" styleClass="ui-priority-primary" />
+            
+        </h:form>
+        <h:form>
+            <p:outputLabel  value="# Id: " />
+            <p:outputLabel value="#{updateCarBean.theId} " />    
+        </h:form>
+        
+         <h:form>
+            <p:outputLabel for="salesPrice"  value="# Precio de venta: " />
+            <p:inputText id="salesPrice" value="#{updateCarBean.salesPrice}">
+            </p:inputText>    
+            <p:messages id="messages"></p:messages>
+            <p:commandButton value="Buscar" id="buscar" update="messages" type="submit" action="#{updateCarBean.updateCar()}" styleClass="ui-priority-primary" />
+            
+        </h:form>
+        
     </h:body>
 </html>
-
