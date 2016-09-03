@@ -2,3 +2,4 @@
 /dist/
 /build/
 glassfish-resources.xml
+private.properties
