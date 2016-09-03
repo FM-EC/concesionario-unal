@@ -6,6 +6,10 @@ INSERT INTO profile (name, lastName, phone, address, city, idCard) VALUES ("andr
 INSERT INTO authentication (idUser, password, email, username) VALUES (1,"1234","prueba@prueba.com","pepepapas");
 INSERT INTO authentication (idUser, password, email, username) VALUES (2,"1234","prueba2@prueba2.com","elperez");
 
+--- roles -----
+INSERT INTO roles VALUES("Administrador",1);
+INSERT INTO roles VALUES("Vendedor",2);
+
 -- proveedores --
 INSERT INTO provider (companyName, phone, address, email) VALUES ("los coches","1234567", "cll 34", "admin@loscoches.com");
 INSERT INTO provider (companyName, phone, address, email) VALUES ("chevychevere","7654321","cra 50","admin@chevychevere.com");
