@@ -17,6 +17,10 @@
             <to-view-id>/Administrador/admin.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/Administrador/admin.xhtml</from-view-id>
