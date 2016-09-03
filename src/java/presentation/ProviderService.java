@@ -11,13 +11,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
 /**
  *
  * @author FABIAN
  */
-@ManagedBean(name="providerService", eager = true)
+@Named(value="providerService")
 @ApplicationScoped
 public class ProviderService {
      

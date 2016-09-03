@@ -2,8 +2,17 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="login.xhtml" x="400" y="150" zoom="true"/>
-        <Node id="index.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="Vendedor/seller.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="Administrador/registroCarro.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="index.xhtml" x="200" y="202" zoom="true"/>
+        <Node id="Administrador/listarCarros.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="public/login.xhtml" x="397" y="391" zoom="true"/>
+        <Node id="Administrador/modificarCarro.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="Administrador/admin.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="Administrador/registro.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="welcome.xhtml" x="920" y="487" zoom="true"/>
+        <Node id="registroVentas.xhtml" x="149" y="424" zoom="true"/>
+        <Node id="successfulRegister.xhtml" x="843" y="428" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
