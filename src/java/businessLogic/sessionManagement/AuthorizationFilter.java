@@ -36,10 +36,10 @@ public class AuthorizationFilter implements Filter {
             HttpSession ses = reqt.getSession(false);
 
             String reqURI = reqt.getRequestURI();
-            Boolean rolOK = (ses != null && reqURI.contains("/" + ses.getAttribute("rol") + "/"));
+//           Boolean rolOK = (ses != null && reqURI.contains("/" + ses.getAttribute("rol") + "/"));
 
-            String pathinfo = reqt.getPathInfo();
-            String context = reqt.getContextPath();
+//            String pathinfo = reqt.getPathInfo();
+//            String context = reqt.getContextPath();
 
             if (reqURI.contains("/index.xhtml")
                     || reqURI.contains("/public/")

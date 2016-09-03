@@ -83,6 +83,8 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
             session.setAttribute("name", user.getProfile().getName());
             session.setAttribute("last_access", user.getLastAccess());
             session.setAttribute("rol", rol.getRoleName());
+            session.setAttribute("idUser", user.getIdUser());
+    
             return true;
         } else {
             return false;

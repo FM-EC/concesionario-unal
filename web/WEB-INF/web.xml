@@ -14,12 +14,12 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     
-        <!-- Login filter -->
+        <!-- Authorization filter -->
     <filter>
         <filter-name>AuthorizationFilter</filter-name>
         <filter-class>businessLogic.sessionManagement.AuthorizationFilter</filter-class>
     </filter>
-    <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
+    <!-- Set the login filter to secure all the pages in the /* path of the application  -->
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/*</url-pattern>
