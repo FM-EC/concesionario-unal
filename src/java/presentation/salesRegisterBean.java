@@ -19,14 +19,14 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import org.primefaces.event.FlowEvent;
 
 /**
  *
  * @author FABIAN
  */
-@ManagedBean
+@Named(value = "salesRegisterBean")
 @ViewScoped
 public class salesRegisterBean {
     

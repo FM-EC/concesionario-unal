@@ -5,6 +5,7 @@
  */
 package businessLogic;
 
+import dataAccess.Profile;
 import dataAccess.Roles;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface RolesFacadeLocal {
     List<Roles> findRange(int[] range);
 
     int count();
+    
+    Roles findByUserId(Profile prof);
     
 }

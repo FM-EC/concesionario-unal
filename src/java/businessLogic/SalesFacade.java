@@ -5,6 +5,7 @@
  */
 package businessLogic;
 
+import dataAccess.Roles;
 import dataAccess.Profile;
 import dataAccess.Sales;
 import java.util.ArrayList;

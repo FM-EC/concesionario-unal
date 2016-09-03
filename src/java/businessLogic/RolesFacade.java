@@ -5,6 +5,7 @@
  */
 package businessLogic;
 
+import dataAccess.Profile;
 import dataAccess.Roles;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,5 +29,17 @@ public class RolesFacade extends AbstractFacade<Roles> implements RolesFacadeLoc
     public RolesFacade() {
         super(Roles.class);
     }
-    
+
+    @Override
+    public Roles findByUserId(Profile prof) {
+        try {
+            Roles rol = new Roles();
+            rol = em.createNamedQuery("Roles.findByUserId",Roles.class).setParameter("idUser", prof).getSingleResult();
+            return rol;
+        } catch (Exception e) {
+            em.close();
+        }
+        return null;
+    }
+
 }

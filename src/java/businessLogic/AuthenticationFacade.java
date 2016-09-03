@@ -5,10 +5,15 @@
  */
 package businessLogic;
 
+import businessLogic.sessionManagement.SessionUtils;
 import dataAccess.Authentication;
+import dataAccess.Profile;
+import dataAccess.Roles;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -16,7 +21,8 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class AuthenticationFacade extends AbstractFacade<Authentication> implements AuthenticationFacadeLocal {
-
+    @EJB
+    RolesFacadeLocal rolesEjb;
     @PersistenceContext(unitName = "concesionarioPU")
     private EntityManager em;
 
@@ -24,14 +30,12 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    
-     public String createAuth(String theEmail, String theUsername, String thePass, Integer theId)
-    {
+
+    public String createAuth(String theEmail, String theUsername, String thePass, Integer theId) {
         java.util.Date dt = new java.util.Date();
 
-        java.text.SimpleDateFormat sdf = 
-             new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        java.text.SimpleDateFormat sdf
+                = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         String currentTime = sdf.format(dt);
         Authentication theAuth = new Authentication();
@@ -40,16 +44,16 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
         theAuth.setPassword(thePass);
         theAuth.setUsername(theUsername);
         theAuth.setLastAccess(dt);
-        
+
         System.out.println(theAuth.getEmail() + theAuth.getIdUser());
         em.clear();
-        try{em.persist(theAuth);
+        try {
+            em.persist(theAuth);
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        catch(Exception e)
-        {System.out.println(e);}
-        
-        
-       /* em.getTransaction().begin();
+
+        /* em.getTransaction().begin();
         try {
             em.persist(theAuth);
             em.getTransaction().commit();
@@ -61,18 +65,33 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
         }*/
         return theAuth.getEmail();
     }
-     
+
     @Override
     // Authenticate users function using the entity autentication
-    public boolean authenticate(String email, String password){
+    public boolean authenticate(String email, String password) {
         System.out.println(email);
         Authentication user = getUserByEmail(email);
-        if(user == null){ return false; }
-        return user.getPassword().equals(password);
+        if (user == null) {
+            return false;
+        }
+        if (user.getPassword().equals(password)) {
+            Profile profile=new Profile(user.getIdUser());
+            Roles rol=rolesEjb.findByUserId(profile);
+            HttpSession session = SessionUtils.getSession();
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("name", user.getProfile().getName());
+            session.setAttribute("last_access", user.getLastAccess());
+            session.setAttribute("rol", rol.getRoleName());
+            return true;
+        } else {
+            return false;
+        }
+
     }
-    
+
     // Method to find the user by email coming from loginBean
-    public Authentication getUserByEmail(String email){
+    public Authentication getUserByEmail(String email) {
         try {
             return em.createNamedQuery("Authentication.findByEmail", Authentication.class)
                     .setParameter("email", email)
@@ -80,14 +99,11 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
         } catch (Exception e) {
             return null;
         }
-        
+
     }
-    
-   
+
     public AuthenticationFacade() {
         super(Authentication.class);
     }
 
-    
-    
 }
