@@ -23,89 +23,109 @@
         <f:view>
 
 
-            <h:form>
+            <h:form id="tableform">
 
-                <p:dataTable value="#{searchCars.findAll()}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdCar"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idCar}"/>
+                <p:dataTable var="car" value="#{searchCars.cars}"  widgetVar="carsTable" paginator="true" rows="10" id="carTable" 
+                             emptyMessage="No se encontraron elementos dados los criterios" filteredValue="#{searchCars.filteredCars}" >
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Buscar en todos los campos:" />
+                            <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Ingrese una busqueda"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column filterBy="#{car.idCar}" headerText="Id" filterMatchMode="contains">
+                        <h:outputText value="#{car.idCar}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Brand"/>
+
+
+
+                    <p:column filterBy="#{car.brand}" headerText="Marca" filterMatchMode="exact">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('carsTable').filter()" >
+                                <f:selectItem itemLabel="Seleccione uno" itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItems value="#{searchCars.brands}" />
+                            </p:selectOneMenu>
                         </f:facet>
-                        <h:outputText value="#{item.brand}"/>
+                        <h:outputText value="#{car.brand}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="SalesPrice"/>
+
+                    <p:column filterBy="#{car.model}" headerText="Modelo"  filterMatchMode="contains">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column filterBy="#{car.color}" headerText="Color"  filterMatchMode="contains">
+                        <h:outputText value="#{car.color}" />
+                    </p:column> 
+
+                    <p:column filterBy="#{car.carriagePlate}" headerText="Placa" filterMatchMode="contains">
+                        <h:outputText value="#{car.carriagePlate}" />
+                    </p:column>
+
+                    <p:column filterBy="#{car.transmissionType}" headerText="Tipo de Transmision" filterMatchMode="equals">
+                        <f:facet name="filter">
+                            <p:selectOneButton onchange="PF('carsTable').filter()">
+                                <f:selectItem itemLabel="Todos" itemValue="" />
+                                <f:selectItem itemLabel="Auto." itemValue="Automatica" />
+                                <f:selectItem itemLabel="Man." itemValue="Manual" />
+                            </p:selectOneButton>
                         </f:facet>
-                        <h:outputText value="#{item.salesPrice}"/>
+                        <h:outputText value="#{car.transmissionType}" />
+                    </p:column> 
+
+                    <p:column filterBy="#{car.chasisNumber}" headerText="Numero de chasis" filterMatchMode="contains">
+                        <h:outputText value="#{car.chasisNumber}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="PurchasePrice"/>
-                        </f:facet>
-                        <h:outputText value="#{item.purchasePrice}"/>
+
+                    <p:column filterBy="#{car.engineNumber}" headerText="Numero de motor" filterMatchMode="contains">
+                        <h:outputText value="#{car.engineNumber}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Model"/>
-                        </f:facet>
-                        <h:outputText value="#{item.model}"/>
+
+                    <p:column headerText="Precio de compra">
+                        <h:outputText value="#{car.purchasePrice}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color"/>
-                        </f:facet>
-                        <h:outputText value="#{item.color}"/>
+
+                    <p:column headerText="Precio de venta">
+                        <h:outputText value="#{car.salesPrice}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="CarriagePlate"/>
-                        </f:facet>
-                        <h:outputText value="#{item.carriagePlate}"/>
+
+
+                    <p:column headerText="Proveedor">
+                        <p:panelGrid  columns="2">
+                            <h:outputText value= "#{car.idProvider.companyName}"/>
+                            <p:commandButton update=":tableform:providerDetail" oncomplete="PF('providerDialog').show()" icon="ui-icon-search" title="View">
+                                <f:setPropertyActionListener value="#{car}" target="#{searchCars.selectedCar}" />
+                            </p:commandButton>
+                        </p:panelGrid>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="TransmissionType"/>
-                        </f:facet>
-                        <h:outputText value="#{item.transmissionType}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="ChasisNumber"/>
-                        </f:facet>
-                        <h:outputText value="#{item.chasisNumber}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="EngineNumber"/>
-                        </f:facet>
-                        <h:outputText value="#{item.engineNumber}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Sold"/>
-                        </f:facet>
-                        <h:outputText value="#{item.sold}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdProvider"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idProvider}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdVenta"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idVenta}"/>
-                    </p:column>
+
                 </p:dataTable>
+                <p:growl id="message" showDetail="true" />
+
+                <p:dialog header="Información de Proveedor" widgetVar="providerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="providerDetail" style="text-align:center;">
+
+                        <p:panelGrid  columns="2" rendered="#{not empty searchCars.selectedCar}" columnClasses="label,value">
+
+                            <h:outputText value="Nombre proveedor:" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.companyName}" />
+
+                            <h:outputText value="Dirección:" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.address}" />
+
+                            <h:outputText value="email:" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.email}"/>
+
+                            <h:outputText value="Teléfono" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.phone}" />
+                        </p:panelGrid>
+
+                    </p:outputPanel>
+                </p:dialog>
+
             </h:form>
+
 
         </f:view>
     </h:body>
