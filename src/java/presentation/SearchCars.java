@@ -6,7 +6,9 @@
 package presentation;
 
 import businessLogic.CarsFacadeLocal;
+import businessLogic.ProviderFacadeLocal;
 import dataAccess.Cars;
+import dataAccess.Provider;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,29 +31,29 @@ public class SearchCars implements Serializable {
 
     @EJB
     private CarsFacadeLocal ejb;
+    @EJB
+    private ProviderFacadeLocal ejbProvider;
     private List<Cars> cars;
     private List<Cars> filteredCars;
+    private Cars selectedCar;
 
     @PostConstruct
     public void init() {
         cars = ejb.findAll();
+        
     }
 
-    /**
-     * Creates a new instance of SearchCars
-     *
-     * public SearchCars() { }
-     */
-    /*
-    public List<Cars> findAll() {
-        cars = ejb.findAll();
-        return cars;
+    public Cars getSelectedCar() {
+        return selectedCar;
     }
-     */
-    public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Proveedor Seleccionado", event.getObject().toString());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+    public void setSelectedCar(Cars selectedCar) {
+        this.selectedCar = selectedCar;
     }
+
+
+
+
 
     public List<String> getBrands() {
         List<String> brands = new ArrayList<>();

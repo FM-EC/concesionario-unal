@@ -85,6 +85,16 @@
                         <h:outputText value="#{car.engineNumber}" />
                     </p:column>
 
+                    <p:column headerText="Proveedor">
+                        <p:panelGrid  columns="2">
+                            <h:outputText value= "#{car.idProvider.companyName}"/>
+                            <p:commandButton update=":tableform:providerDetail" oncomplete="PF('providerDialog').show()" icon="ui-icon-search" title="View">
+                                <f:setPropertyActionListener value="#{car}" target="#{searchCars.selectedCar}" />
+                            </p:commandButton>
+                        </p:panelGrid>
+                    </p:column>
+
+
                     <p:column headerText="Eliminar">
                         <f:facet name="header">
                             <h:outputText value="" />
@@ -99,50 +109,30 @@
 
 
 
-                    <!--
-                    
-                    <p:column headerText="Marca">
-                        <h:outputText value="#{car.brand}" />
-                    </p:column>
-                    <p:column headerText="Modelo">
-                        <h:outputText value="#{car.model}" />
-                    </p:column>
 
-                    <p:column headerText="Color">
-                        <h:outputText value="#{car.color}" />
-                    </p:column>                
-                    <p:column headerText="Placa">
-                        <h:outputText value="#{car.carriagePlate}" />
-                    </p:column>      
-                    <p:column headerText="Tipo de Transmision">
-                        <h:outputText value="#{car.transmissionType}" />
-                    </p:column>                    
-                    <p:column headerText="Numero de chasis">
-                        <h:outputText value="#{car.chasisNumber}" />
-                    </p:column>
-                    <p:column headerText="Numero de motor">
-                        <h:outputText value="#{car.engineNumber}" />
-                    </p:column>
-                    <p:column headerText="Precio de compra">
-                        <h:outputText value="#{car.purchasePrice}" />
-                    </p:column>                    
-
-                    <p:column headerText="Precio de venta">
-                        <h:outputText value="#{car.salesPrice}" />
-                    </p:column>
-                    <p:column headerText="Proveedor">
-                        <h:outputText value= "#{car.idProvider}"/>
-
-                    </p:column>
-                    <p:column headerText="Eliminar">
-                        <f:facet name="header">
-                            <h:outputText value="" />
-                        </f:facet>
-                        <p:commandButton icon="ui-icon-close" title="Eliminar"
-                                         actionListener="#{carRegisterBean.deleteCar(car)}" update="carTable" />
-                    </p:column>\-->
                 </p:dataTable>
                 <p:growl id="message" showDetail="true" />
+
+                <p:dialog header="Información de Proveedor" widgetVar="providerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="providerDetail" style="text-align:center;">
+
+                        <p:panelGrid  columns="2" rendered="#{not empty searchCars.selectedCar}" columnClasses="label,value">
+
+                            <h:outputText value="Nombre proveedor:" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.companyName}" />
+
+                            <h:outputText value="Dirección:" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.address}" />
+
+                            <h:outputText value="email:" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.email}"/>
+
+                            <h:outputText value="Teléfono" />
+                            <h:outputText value="#{searchCars.selectedCar.idProvider.phone}" />
+                        </p:panelGrid>
+
+                    </p:outputPanel>
+                </p:dialog>
 
             </h:form>
             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
