@@ -39,6 +39,7 @@ public class UpdateCarBean {
     private String chasisNumber;
     private String engineNumber;
     private String transmissionType;
+    private float originalSalesPrice;
     
     @EJB 
     private CarsFacadeLocal ejb;
@@ -143,6 +144,14 @@ public class UpdateCarBean {
     public void setEjb(CarsFacadeLocal ejb) {
         this.ejb = ejb;
     }
+
+    public float getOriginalSalesPrice() {
+        return originalSalesPrice;
+    }
+
+    public void setOriginalSalesPrice(float originalSalesPrice) {
+        this.originalSalesPrice = originalSalesPrice;
+    }
     
     
     public UpdateCarBean(){}
@@ -159,7 +168,7 @@ public class UpdateCarBean {
         setColor(theCar.getColor());
         setTransmissionType(theCar.getTransmissionType());
         setPurchasePrice(theCar.getPurchasePrice());
-        
+        setOriginalSalesPrice(theCar.getSalesPrice());
         
         System.out.println(theCar.getEngineNumber());
         click();
