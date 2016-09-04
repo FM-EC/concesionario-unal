@@ -36,7 +36,8 @@ public class estadisticasBean {
     private Profile currentUser;
     @EJB
     private SalesFacadeLocal sales;
-       
+    private HashMap<String, Float> ventas;
+    
     public LineChartModel getAreaModel() {
         return areaModel;
     }
@@ -68,11 +69,9 @@ public class estadisticasBean {
         meses.put("octubre", 0);
         meses.put("noviembre", 0);
         meses.put("diciembre", 0);
-        System.out.println("tamaño sales: " + sales.size());
         Calendar cal = Calendar.getInstance();
         sales.forEach((it)->{
             cal.setTime(it.getSaleDate());
-            System.out.println(cal.get(Calendar.MONTH) + 1);
             switch (cal.get(Calendar.MONTH) +1) {
                 case 1:  meses.put("enero", meses.get("enero") + 1);
                          break;
@@ -98,12 +97,73 @@ public class estadisticasBean {
                          break;
                 case 12: meses.put("diciembre", meses.get("diciembre") + 1);
                          break;
-                default: System.out.println("pailas");
+                default: 
                          break;
         }
         });
         
+        calcularValorVentas(sales);
         createAreaModel(meses);
+    }
+    
+    private void calcularValorVentas(List<Sales> sales){
+        ventas = new HashMap<String, Float>();
+        ventas.put("Enero", 0.0f);
+        ventas.put("Febrero", 0.0f);
+        ventas.put("Marzo", 0.0f);
+        ventas.put("Abril", 0.0f);
+        ventas.put("Mayo", 0.0f);
+        ventas.put("Junio", 0.0f);
+        ventas.put("Julio", 0.0f);
+        ventas.put("Agosto", 0.0f);
+        ventas.put("Septiembre", 0.0f);
+        ventas.put("Octubre", 0.0f);
+        ventas.put("Noviembre", 0.0f);
+        ventas.put("Diciembre", 0.0f);
+        Calendar cal = Calendar.getInstance();
+        sales.forEach((it)->{
+            cal.setTime(it.getSaleDate());
+            switch (cal.get(Calendar.MONTH) + 1) {
+                case 1:
+                    ventas.put("Enero", ventas.get("Enero") + it.getTotalValue());
+                    break;
+                case 2:
+                    ventas.put("Febrero", ventas.get("Febrero") + it.getTotalValue());
+                    break;
+                case 3:
+                    ventas.put("Marzo", ventas.get("Marzo") + it.getTotalValue());
+                    break;
+                case 4:
+                    ventas.put("Abril", ventas.get("Abril") + it.getTotalValue());
+                    break;
+                case 5:
+                    ventas.put("Mayo", ventas.get("Mayo") + it.getTotalValue());
+                    break;
+                case 6:
+                    ventas.put("Junio", ventas.get("Junio") + it.getTotalValue());
+                    break;
+                case 7:
+                    ventas.put("Julio", ventas.get("Julio") + it.getTotalValue());
+                    break;
+                case 8:
+                    ventas.put("Agosto", ventas.get("Agosto") + it.getTotalValue());
+                    break;
+                case 9:
+                    ventas.put("Septiembre", ventas.get("Septiembre") + it.getTotalValue());
+                    break;
+                case 10:
+                    ventas.put("Octubre", ventas.get("Octubre") + it.getTotalValue());
+                    break;
+                case 11:
+                    ventas.put("Noviembre", ventas.get("Noviembre") + it.getTotalValue());
+                    break;
+                case 12:
+                    ventas.put("Diciembre", ventas.get("Diciembre") + it.getTotalValue());
+                    break;
+                default:
+                    break;
+        }
+        });
     }
     
     private void createAreaModel(HashMap<String, Integer> map) {
@@ -113,23 +173,23 @@ public class estadisticasBean {
         mes.values().stream().forEach((key) -> {
             System.out.println(key);
         });
-        LineChartSeries ventas = new LineChartSeries();
-        ventas.setFill(true);
-        ventas.setLabel("Ventas");
-        ventas.set("Enero", mes.get("enero"));
-        ventas.set("Febrero", mes.get("febrero"));
-        ventas.set("Marzo", mes.get("marzo"));
-        ventas.set("Abril", mes.get("abril"));
-        ventas.set("Mayo", mes.get("mayo"));
-        ventas.set("Junio", mes.get("junio"));
-        ventas.set("Julio", mes.get("julio"));
-        ventas.set("Agosto", mes.get("agosto"));
-        ventas.set("Septiembre", mes.get("septiembre"));
-        ventas.set("Octubre", mes.get("octubre"));
-        ventas.set("Noviembre", mes.get("noviembre"));
-        ventas.set("Diciembre", mes.get("diciembre"));
+        LineChartSeries Grafica = new LineChartSeries();
+        Grafica.setFill(true);
+        Grafica.setLabel("Ventas");
+        Grafica.set("Enero", mes.get("enero"));
+        Grafica.set("Febrero", mes.get("febrero"));
+        Grafica.set("Marzo", mes.get("marzo"));
+        Grafica.set("Abril", mes.get("abril"));
+        Grafica.set("Mayo", mes.get("mayo"));
+        Grafica.set("Junio", mes.get("junio"));
+        Grafica.set("Julio", mes.get("julio"));
+        Grafica.set("Agosto", mes.get("agosto"));
+        Grafica.set("Septiembre", mes.get("septiembre"));
+        Grafica.set("Octubre", mes.get("octubre"));
+        Grafica.set("Noviembre", mes.get("noviembre"));
+        Grafica.set("Diciembre", mes.get("diciembre"));
         
-        areaModel.addSeries(ventas);
+        areaModel.addSeries(Grafica);
         
 
         areaModel.setTitle("Ventas por mes");
@@ -160,6 +220,13 @@ public class estadisticasBean {
     public void setCurrentUser(Profile currentUser) {
         this.currentUser = currentUser;
     }
-    
-    
+
+    public HashMap<String, Float> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(HashMap<String, Float> ventas) {
+        this.ventas = ventas;
+    }
+     
 }

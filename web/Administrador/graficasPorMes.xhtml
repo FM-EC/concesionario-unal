@@ -10,13 +10,18 @@
     </h:head>
     <h:body>
         <ui:insert name="header" >
-            <ui:include src="headerSeller.xhtml" />
+            <ui:include src="headerAdmin.xhtml" />
         </ui:insert>
         
-        <p>Grafica por mes de:</p>
+        <h2>Grafica por mes de:</h2>
         <p:outputLabel value="#{estadisticasBean.currentUser.name}"></p:outputLabel> 
         <p:outputLabel value="#{estadisticasBean.currentUser.lastName}"></p:outputLabel>
         <p:chart id="display" type="line" model="#{estadisticasBean.getAreaModel()}" rendered="#{estadisticasBean.getAreaModel() != null}" style="height:300px; width: 1000px;" />
+        
+        <h2>Valor de las ventas por mes:</h2>
+        <ui:repeat value="#{estadisticasBean.ventas.entrySet().toArray()}" var="entry">
+                #{entry.key} = $#{entry.value} <br/>
+        </ui:repeat>
     </h:body>
 </html>
 
