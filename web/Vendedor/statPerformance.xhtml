@@ -25,7 +25,7 @@
             <p:growl id="msgs" showDetail="true" />
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="mask"  value="Escoger dia:" />
-                <p:calendar  id="mask" value="#{sellerPerformanceByDay.dt}" pattern="yyyy-MM-dd" mask="true"  immediate="true"/>
+                <p:calendar  id="mask" value="#{sellerPerformanceByDay.dt}" pattern="yyyy-MM-dd" mask="true"  immediate="true" required="true"/>
             </h:panelGrid>
             
             <p:messages id="messages"></p:messages>

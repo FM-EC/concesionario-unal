@@ -28,6 +28,8 @@ public interface ClientFacadeLocal {
 
     List<Client> findRange(int[] range);
 
+    public Integer createClient(String theName, String theLastName, String theEmail ,String thePhone, String theAddress);
+    
     int count();
     
 }

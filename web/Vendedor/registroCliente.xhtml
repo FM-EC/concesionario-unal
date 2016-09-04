@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:head>
+        <title>Registro</title>
+        <link rel="stylesheet" href="../styles/style.css" type="text/css"></link>
+    </h:head>
+    <h:body>
+        <ui:insert name="header" >
+            <ui:include src="headerSeller.xhtml" />
+        </ui:insert>
+        <br></br>
+        
+        <h1>Formulario registro nuevo cliente</h1>
+        
+        <h:form>
+            <h:panelGrid id="grid" columns="2" cellpadding="6">
+                 <p:outputLabel for="name" value="Nombre:" />
+                 <p:inputText id="name" value="#{registerClientBean.name}" required="true" validatorMessage="Nombre invalido">
+                    <f:validateRegex
+                        pattern="[A-Za-z]+" />
+            </p:inputText>
+            
+            <p:outputLabel for="lastName" value="Apellido:" />
+            <p:inputText id="lastName" value="#{registerClientBean.lastName}" required="true" validatorMessage="Apellido invalido">
+                 <f:validateRegex
+                        pattern="[A-Za-z]+" />
+            </p:inputText>
+            
+            <p:outputLabel for="email" value="Email:" />
+            <p:inputText id="email" value="#{registerClientBean.email}" required="true" validatorMessage="Email invalido">
+                <f:validateRegex
+                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+            </p:inputText>
+                
+            <p:outputLabel for="phone" value="Telefono:" />
+            <p:inputText id="phone" value="#{registerClientBean.phone}" required="true" validatorMessage="Telefono invalido">
+                 <f:validateRegex
+                        pattern="[0-9-]*[0-9]+$" />
+            </p:inputText>
+            
+            <p:outputLabel for="address" value="Direccion:" />
+            <p:inputText id="address" value="#{registerClientBean.address}" required="true" validatorMessage="Dirrecion invalida">
+                 <f:validateRegex
+                        pattern="[A-Za-z0-9 ]+" />
+            </p:inputText>
+            </h:panelGrid>
+            
+            <p:messages id="messages"></p:messages>
+            <p:commandButton value="Registrar" id="signup" update="messages" type="submit" action="#{registerClientBean.createClient()}" styleClass="ui-priority-primary" />
+        </h:form>    
+        
+    </h:body>    
+</html>
