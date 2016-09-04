@@ -262,7 +262,7 @@ public class Cars implements Serializable {
 
     @Override
     public String toString() {
-        return "dataAccess.Cars[ idCar=" + idCar + " ]";
+        return "plate: "+this.carriagePlate+", brand: "+this.brand;
     }
     
 }

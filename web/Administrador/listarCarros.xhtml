@@ -26,89 +26,131 @@
         <f:view>
 
 
-            <h:form>
+            <h:form id="tableform">
 
-                <p:dataTable value="#{searchCars.findAll()}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdCar"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idCar}"/>
+                <p:dataTable var="car" value="#{searchCars.cars}"  widgetVar="carsTable" paginator="true" rows="10" id="carTable" 
+                             emptyMessage="No se encontraron elementos dados los criterios" filteredValue="#{searchCars.filteredCars}" >
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Buscar en todos los campos:" />
+                            <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Ingrese una busqueda"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column filterBy="#{car.idCar}" headerText="Id" filterMatchMode="contains">
+                        <h:outputText value="#{car.idCar}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Brand"/>
+
+
+
+                    <p:column filterBy="#{car.brand}" headerText="Marca" filterMatchMode="exact">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('carsTable').filter()" >
+                                <f:selectItem itemLabel="Seleccione uno" itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItems value="#{searchCars.brands}" />
+                            </p:selectOneMenu>
                         </f:facet>
-                        <h:outputText value="#{item.brand}"/>
+                        <h:outputText value="#{car.brand}" />
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="SalesPrice"/>
+
+                    <p:column filterBy="#{car.model}" headerText="Modelo"  filterMatchMode="contains">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column filterBy="#{car.color}" headerText="Color"  filterMatchMode="contains">
+                        <h:outputText value="#{car.color}" />
+                    </p:column> 
+
+                    <p:column filterBy="#{car.carriagePlate}" headerText="Placa" filterMatchMode="contains">
+                        <h:outputText value="#{car.carriagePlate}" />
+                    </p:column>
+
+                    <p:column filterBy="#{car.transmissionType}" headerText="Tipo de Transmision" filterMatchMode="equals">
+                        <f:facet name="filter">
+                            <p:selectOneButton onchange="PF('carsTable').filter()">
+                                <f:selectItem itemLabel="Todos" itemValue="" />
+                                <f:selectItem itemLabel="Auto." itemValue="Automatica" />
+                                <f:selectItem itemLabel="Man." itemValue="Manual" />
+                            </p:selectOneButton>
                         </f:facet>
-                        <h:outputText value="#{item.salesPrice}"/>
+                        <h:outputText value="#{car.transmissionType}" />
+                    </p:column> 
+
+                    <p:column filterBy="#{car.chasisNumber}" headerText="Numero de chasis" filterMatchMode="contains">
+                        <h:outputText value="#{car.chasisNumber}" />
                     </p:column>
-                    <p:column>
+
+                    <p:column filterBy="#{car.engineNumber}" headerText="Numero de motor" filterMatchMode="contains">
+                        <h:outputText value="#{car.engineNumber}" />
+                    </p:column>
+
+                    <p:column headerText="Eliminar">
                         <f:facet name="header">
-                            <h:outputText value="PurchasePrice"/>
+                            <h:outputText value="" />
                         </f:facet>
-                        <h:outputText value="#{item.purchasePrice}"/>
+                        <p:commandButton icon="ui-icon-trash" actionListener="#{searchCars.deleteCar(car)}" update="carTable tableform:message" >
+                            <p:confirm header="Confirmación" message="Está seguro que desea eliminar este elemento?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+
                     </p:column>
-                    <p:column>
+
+
+
+
+                    <!--
+                    
+                    <p:column headerText="Marca">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
+                    <p:column headerText="Modelo">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>                
+                    <p:column headerText="Placa">
+                        <h:outputText value="#{car.carriagePlate}" />
+                    </p:column>      
+                    <p:column headerText="Tipo de Transmision">
+                        <h:outputText value="#{car.transmissionType}" />
+                    </p:column>                    
+                    <p:column headerText="Numero de chasis">
+                        <h:outputText value="#{car.chasisNumber}" />
+                    </p:column>
+                    <p:column headerText="Numero de motor">
+                        <h:outputText value="#{car.engineNumber}" />
+                    </p:column>
+                    <p:column headerText="Precio de compra">
+                        <h:outputText value="#{car.purchasePrice}" />
+                    </p:column>                    
+
+                    <p:column headerText="Precio de venta">
+                        <h:outputText value="#{car.salesPrice}" />
+                    </p:column>
+                    <p:column headerText="Proveedor">
+                        <h:outputText value= "#{car.idProvider}"/>
+
+                    </p:column>
+                    <p:column headerText="Eliminar">
                         <f:facet name="header">
-                            <h:outputText value="Model"/>
+                            <h:outputText value="" />
                         </f:facet>
-                        <h:outputText value="#{item.model}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Color"/>
-                        </f:facet>
-                        <h:outputText value="#{item.color}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="CarriagePlate"/>
-                        </f:facet>
-                        <h:outputText value="#{item.carriagePlate}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="TransmissionType"/>
-                        </f:facet>
-                        <h:outputText value="#{item.transmissionType}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="ChasisNumber"/>
-                        </f:facet>
-                        <h:outputText value="#{item.chasisNumber}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="EngineNumber"/>
-                        </f:facet>
-                        <h:outputText value="#{item.engineNumber}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Sold"/>
-                        </f:facet>
-                        <h:outputText value="#{item.sold}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdProvider"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idProvider}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdVenta"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idVenta}"/>
-                    </p:column>
+                        <p:commandButton icon="ui-icon-close" title="Eliminar"
+                                         actionListener="#{carRegisterBean.deleteCar(car)}" update="carTable" />
+                    </p:column>\-->
                 </p:dataTable>
+                <p:growl id="message" showDetail="true" />
+
             </h:form>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <h:form>
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                </h:form>
+            </p:confirmDialog>
 
         </f:view>
     </h:body>

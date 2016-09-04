@@ -159,5 +159,9 @@ public class carRegisterBean {
         return null;
     }
     
+    public void deleteCar(Cars carro){
+        car.remove(carro);
+    }
+    
     
 }

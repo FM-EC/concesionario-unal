@@ -17,7 +17,8 @@ import javax.faces.bean.ManagedBean;
  *
  * @author FABIAN
  */
-@ManagedBean(name="providerService", eager = true)
+//@ManagedBean(name="providerService", eager = true)
+@ManagedBean
 @ApplicationScoped
 public class ProviderService {
      
