@@ -16,13 +16,14 @@
         <f:view>                   
             <h:form>
                 <h1><h:outputText value="Usuarios"/></h1>
-                <p:dataTable var="user" value="#{estadisticasBean.getUsers()}" paginator="true" rows="10" id="usersTable" lazy="true">
+                <p:dataTable var="user" value="#{estadisticasBean.getUsers()}" paginator="true" rows="10" id="usersTable" 
+                             emptyMessage="No se encontraron elementos dados los criterios" filteredValue="#{estadisticasBean.filteredUsers}">
 
-                    <p:column headerText="Nombre" sortBy="#{user.name}" filterBy="#{user.name}">
+                    <p:column headerText="Nombre" sortBy="#{user.name}" filterBy="#{user.name}" filterMatchMode="contains">
                         <h:outputText value="#{user.name}" />
                     </p:column>
 
-                    <p:column headerText="Apellido">
+                    <p:column headerText="Apellido" sortBy="#{user.lastName}" filterBy="#{user.lastName}" filterMatchMode="contains">
                         <h:outputText value="#{user.lastName}" />
                     </p:column>
                     <p:column>
