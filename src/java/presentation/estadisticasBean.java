@@ -34,6 +34,7 @@ public class estadisticasBean {
     private ProfileFacadeLocal users;
     private LineChartModel areaModel;
     private Profile currentUser;
+    private List<Profile> filteredUsers;
     @EJB
     private SalesFacadeLocal sales;
     private HashMap<String, Float> ventas;
@@ -228,5 +229,14 @@ public class estadisticasBean {
     public void setVentas(HashMap<String, Float> ventas) {
         this.ventas = ventas;
     }
+
+    public List<Profile> getFilteredUsers() {
+        return filteredUsers;
+    }
+
+    public void setFilteredUsers(List<Profile> filteredUsers) {
+        this.filteredUsers = filteredUsers;
+    }
+    
      
 }

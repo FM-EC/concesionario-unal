@@ -6,9 +6,7 @@
 package dataAccess;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,17 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author FABIAN
+ * @author Alvaro
  */
 @Entity
 @Table(name = "profile")
@@ -41,12 +36,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Profile.findByIdCard", query = "SELECT p FROM Profile p WHERE p.idCard = :idCard"),
     @NamedQuery(name = "Profile.findByCity", query = "SELECT p FROM Profile p WHERE p.city = :city")})
 public class Profile implements Serializable {
-
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "idCard")
-    private String idCard;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -80,14 +69,11 @@ public class Profile implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "city")
     private String city;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
-    private Collection<Purchases> purchasesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
-    private Collection<Roles> rolesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUser")
-    private Collection<Sales> salesCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "profile")
-    private Authentication authentication;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 15)
+    @Column(name = "idCard")
+    private String idCard;
 
     public Profile() {
     }
@@ -96,13 +82,14 @@ public class Profile implements Serializable {
         this.idUser = idUser;
     }
 
-    public Profile(Integer idUser, String name, String lastName, String phone, String address, String city) {
+    public Profile(Integer idUser, String name, String lastName, String phone, String address, String city, String idCard) {
         this.idUser = idUser;
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;
         this.address = address;
         this.city = city;
+        this.idCard = idCard;
     }
 
     public Integer getIdUser() {
@@ -153,39 +140,12 @@ public class Profile implements Serializable {
         this.city = city;
     }
 
-    @XmlTransient
-    public Collection<Purchases> getPurchasesCollection() {
-        return purchasesCollection;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setPurchasesCollection(Collection<Purchases> purchasesCollection) {
-        this.purchasesCollection = purchasesCollection;
-    }
-
-    @XmlTransient
-    public Collection<Roles> getRolesCollection() {
-        return rolesCollection;
-    }
-
-    public void setRolesCollection(Collection<Roles> rolesCollection) {
-        this.rolesCollection = rolesCollection;
-    }
-
-    @XmlTransient
-    public Collection<Sales> getSalesCollection() {
-        return salesCollection;
-    }
-
-    public void setSalesCollection(Collection<Sales> salesCollection) {
-        this.salesCollection = salesCollection;
-    }
-
-    public Authentication getAuthentication() {
-        return authentication;
-    }
-
-    public void setAuthentication(Authentication authentication) {
-        this.authentication = authentication;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     @Override
@@ -211,14 +171,6 @@ public class Profile implements Serializable {
     @Override
     public String toString() {
         return "dataAccess.Profile[ idUser=" + idUser + " ]";
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
     }
     
 }

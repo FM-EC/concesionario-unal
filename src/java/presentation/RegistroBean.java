@@ -145,7 +145,7 @@ public class RegistroBean {
         
         String theRole = createTheRole(theId, myProf);
         System.out.println("Bienvenido " + theEmail +" "+  theRole);
-        return "login";
+        return "admin";
     }
     
       public Integer createProfile()

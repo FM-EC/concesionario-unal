@@ -90,5 +90,5 @@ public class Roles implements Serializable {
     public String toString() {
         return "dataAccess.Roles[ roleName=" + roleName + " ]";
     }
-    
+
 }

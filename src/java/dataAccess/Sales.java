@@ -6,6 +6,7 @@
 package dataAccess;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,12 +18,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,6 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sales.findBySaleDate", query = "SELECT s FROM Sales s WHERE s.saleDate = :saleDate"),
     @NamedQuery(name = "Sales.findByIdUser", query = "SELECT s FROM Sales s WHERE s.idUser = :idUser")})
 public class Sales implements Serializable {
+
+    @OneToMany(mappedBy = "idVenta")
+    private Collection<Cars> carsCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -149,6 +155,15 @@ public class Sales implements Serializable {
     @Override
     public String toString() {
         return "dataAccess.Sales[ idSales=" + idSales + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Cars> getCarsCollection() {
+        return carsCollection;
+    }
+
+    public void setCarsCollection(Collection<Cars> carsCollection) {
+        this.carsCollection = carsCollection;
     }
     
 }
