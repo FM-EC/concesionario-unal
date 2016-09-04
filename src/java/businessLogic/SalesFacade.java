@@ -91,7 +91,16 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
         
     }
     
-    
+    public float getComissionPerDay(List <Sales> theSales)
+    {
+        float theTotalSum = 0;
+        for (Sales  s: theSales)
+        {
+            theTotalSum += s.getTotalValue();
+        }
+         
+        return (float) (theTotalSum*0.1);
+    }
     public SalesFacade() {
         super(Sales.class);
     }

@@ -14,6 +14,7 @@ import dataAccess.Cars;
 import dataAccess.Profile;
 import dataAccess.Sales;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
@@ -67,5 +68,7 @@ public class SellersalesBean {
          int theId = theSale.getIdSales();
          return ejb.getCommission(theId);
      }
+     
+    
      
 }

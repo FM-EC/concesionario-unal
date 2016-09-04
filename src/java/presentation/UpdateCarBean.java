@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -161,14 +162,27 @@ public class UpdateCarBean {
         
         
         System.out.println(theCar.getEngineNumber());
+        click();
             
         
+    }
+    
+    public void click() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        requestContext.update("theCar:display");
+        requestContext.execute("PF('dlg').show()");
     }
     
     public void updateCar()
     {
        boolean changed = ejb.update(theCarriagePlate, salesPrice);
        System.out.println(changed);
+        click1();
     }
     
+    public void click1() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        requestContext.update("modifiedCar:displayModified");
+        requestContext.execute("PF('dlg1').show()");
+    }
 }
