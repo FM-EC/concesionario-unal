@@ -68,11 +68,9 @@ public class estadisticasBean {
         meses.put("octubre", 0);
         meses.put("noviembre", 0);
         meses.put("diciembre", 0);
-        System.out.println("tamaño sales: " + sales.size());
         Calendar cal = Calendar.getInstance();
         sales.forEach((it)->{
             cal.setTime(it.getSaleDate());
-            System.out.println(cal.get(Calendar.MONTH) + 1);
             switch (cal.get(Calendar.MONTH) +1) {
                 case 1:  meses.put("enero", meses.get("enero") + 1);
                          break;
