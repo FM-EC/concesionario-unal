@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Sales.findByTotalValue", query = "SELECT s FROM Sales s WHERE s.totalValue = :totalValue"),
     @NamedQuery(name = "Sales.findBySaleType", query = "SELECT s FROM Sales s WHERE s.saleType = :saleType"),
     @NamedQuery(name = "Sales.findBySaleDate", query = "SELECT s FROM Sales s WHERE s.saleDate = :saleDate"),
+    @NamedQuery(name = "Sales.findLastSales", query = "SELECT s FROM Sales s WHERE s.saleDate LIKE :saleDate"),
     @NamedQuery(name = "Sales.findByIdUser", query = "SELECT s FROM Sales s WHERE s.idUser = :idUser")})
 public class Sales implements Serializable {
 
@@ -66,6 +68,7 @@ public class Sales implements Serializable {
     private Date saleDate;
     @JoinColumn(name = "idClient", referencedColumnName = "idClient")
     @ManyToOne(optional = false)
+    @OrderBy("idUser DESC")
     private Client idClient;
     @JoinColumn(name = "idUser", referencedColumnName = "idUser")
     @ManyToOne(optional = false)
