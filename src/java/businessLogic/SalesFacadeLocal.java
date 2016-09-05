@@ -24,19 +24,21 @@ public interface SalesFacadeLocal {
     void remove(Sales sales);
 
     Sales find(Object id);
-    
+
     public Sales createSale(Sales entity);
 
     List<Sales> findAll();
-    
+
     List<Sales> findByIdUser(Profile id);
 
     List<Sales> findRange(int[] range);
 
     public Sales findByIdSales(int theId);
-     
+
     public float getCommission(int theId);
-    
+
+    Object sellerOfMonth();
+
     int count();
-    
+
 }

@@ -21,7 +21,6 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
 
-
 /**
  *
  * @author FABIAN
@@ -30,33 +29,45 @@ import org.primefaces.model.chart.CategoryAxis;
 @SessionScoped
 public class estadisticasBean {
 
-    @EJB 
+    @EJB
     private ProfileFacadeLocal users;
     private LineChartModel areaModel;
     private Profile currentUser;
+    private Profile sellerOfMonth;
+    private Sales bestSale;
     private List<Profile> filteredUsers;
     @EJB
     private SalesFacadeLocal sales;
+    private List<Sales> saless;
+
+    public List<Sales> getSaless() {
+        return saless;
+    }
+
+    public void setSaless(List<Sales> saless) {
+        this.saless = saless;
+    }
     private HashMap<String, Float> ventas;
-    
+
     public LineChartModel getAreaModel() {
         return areaModel;
     }
+
     /**
      * Creates a new instance of estadisticasBean
      */
     public estadisticasBean() {
     }
-    
-    public List<Profile> getUsers(){
+
+    public List<Profile> getUsers() {
         return users.findAll();
     }
-    
-    public void statsByMonth(Profile user){
+
+    public void statsByMonth(Profile user) {
         calcularVentas(sales.findByIdUser(user));
     }
-    
-    void calcularVentas(List<Sales> sales){
+
+    void calcularVentas(List<Sales> sales) {
         HashMap<String, Integer> meses = new HashMap<String, Integer>();
         meses.put("enero", 0);
         meses.put("febrero", 0);
@@ -71,43 +82,55 @@ public class estadisticasBean {
         meses.put("noviembre", 0);
         meses.put("diciembre", 0);
         Calendar cal = Calendar.getInstance();
-        sales.forEach((it)->{
+        sales.forEach((it) -> {
             cal.setTime(it.getSaleDate());
-            switch (cal.get(Calendar.MONTH) +1) {
-                case 1:  meses.put("enero", meses.get("enero") + 1);
-                         break;
-                case 2:  meses.put("febrero", meses.get("febrero") + 1);
-                         break;
-                case 3:  meses.put("marzo", meses.get("marzo") + 1);
-                         break;
-                case 4:  meses.put("abril", meses.get("abril") + 1);
-                         break;
-                case 5:  meses.put("mayo", meses.get("mayo") + 1);
-                         break;
-                case 6:  meses.put("junio", meses.get("junio") + 1);
-                         break;
-                case 7:  meses.put("julio", meses.get("julio") + 1);
-                         break;
-                case 8:  meses.put("agosto", meses.get("agosto") + 1);
-                         break;
-                case 9:  meses.put("septiembre", meses.get("septiembre") + 1);
-                         break;
-                case 10: meses.put("octubre", meses.get("octubre") + 1);
-                         break;
-                case 11: meses.put("noviembre", meses.get("noviembre") + 1);
-                         break;
-                case 12: meses.put("diciembre", meses.get("diciembre") + 1);
-                         break;
-                default: 
-                         break;
-        }
+            switch (cal.get(Calendar.MONTH) + 1) {
+                case 1:
+                    meses.put("enero", meses.get("enero") + 1);
+                    break;
+                case 2:
+                    meses.put("febrero", meses.get("febrero") + 1);
+                    break;
+                case 3:
+                    meses.put("marzo", meses.get("marzo") + 1);
+                    break;
+                case 4:
+                    meses.put("abril", meses.get("abril") + 1);
+                    break;
+                case 5:
+                    meses.put("mayo", meses.get("mayo") + 1);
+                    break;
+                case 6:
+                    meses.put("junio", meses.get("junio") + 1);
+                    break;
+                case 7:
+                    meses.put("julio", meses.get("julio") + 1);
+                    break;
+                case 8:
+                    meses.put("agosto", meses.get("agosto") + 1);
+                    break;
+                case 9:
+                    meses.put("septiembre", meses.get("septiembre") + 1);
+                    break;
+                case 10:
+                    meses.put("octubre", meses.get("octubre") + 1);
+                    break;
+                case 11:
+                    meses.put("noviembre", meses.get("noviembre") + 1);
+                    break;
+                case 12:
+                    meses.put("diciembre", meses.get("diciembre") + 1);
+                    break;
+                default:
+                    break;
+            }
         });
-        
+
         calcularValorVentas(sales);
         createAreaModel(meses);
     }
-    
-    private void calcularValorVentas(List<Sales> sales){
+
+    private void calcularValorVentas(List<Sales> sales) {
         ventas = new HashMap<String, Float>();
         ventas.put("Enero", 0.0f);
         ventas.put("Febrero", 0.0f);
@@ -122,7 +145,7 @@ public class estadisticasBean {
         ventas.put("Noviembre", 0.0f);
         ventas.put("Diciembre", 0.0f);
         Calendar cal = Calendar.getInstance();
-        sales.forEach((it)->{
+        sales.forEach((it) -> {
             cal.setTime(it.getSaleDate());
             switch (cal.get(Calendar.MONTH) + 1) {
                 case 1:
@@ -163,14 +186,14 @@ public class estadisticasBean {
                     break;
                 default:
                     break;
-        }
+            }
         });
     }
-    
+
     private void createAreaModel(HashMap<String, Integer> map) {
         HashMap<String, Integer> mes = map;
         areaModel = new LineChartModel();
-        
+
         mes.values().stream().forEach((key) -> {
             System.out.println(key);
         });
@@ -189,9 +212,8 @@ public class estadisticasBean {
         Grafica.set("Octubre", mes.get("octubre"));
         Grafica.set("Noviembre", mes.get("noviembre"));
         Grafica.set("Diciembre", mes.get("diciembre"));
-        
+
         areaModel.addSeries(Grafica);
-        
 
         areaModel.setTitle("Ventas por mes");
         areaModel.setLegendPosition("ne");
@@ -204,11 +226,10 @@ public class estadisticasBean {
         yAxis.setLabel("Ventas totales");
         yAxis.setMin(0);
         yAxis.setMax(30);
-        
+
     }
-    
-   
-    public String redirect(Profile user){
+
+    public String redirect(Profile user) {
         setCurrentUser(user);
         statsByMonth(user);
         return "graficasPorMes";
@@ -237,6 +258,21 @@ public class estadisticasBean {
     public void setFilteredUsers(List<Profile> filteredUsers) {
         this.filteredUsers = filteredUsers;
     }
-    
-     
+
+    public Profile getSellerOfMonth() {
+        return sellerOfMonth;
+    }
+
+    public void setSellerOfMonth(Profile sellerOfMonth) {
+        this.sellerOfMonth = sellerOfMonth;
+    }
+
+    public Sales getBestSale() {
+        return bestSale;
+    }
+
+    public void setBestSale(Sales bestSale) {
+        this.bestSale = bestSale;
+    }
+
 }
