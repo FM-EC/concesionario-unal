@@ -37,6 +37,8 @@ public interface SalesFacadeLocal {
      
     public float getCommission(int theId);
     
+    public float getComissionPerDay(List <Sales> theSales);
+    
     int count();
     
 }

@@ -75,12 +75,12 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
             return false;
         }
         if (user.getPassword().equals(password)) {
-            Profile profile=new Profile(user.getIdUser());
+            Profile profile = getProfileById(user.getIdUser());
             Roles rol=rolesEjb.findByUserId(profile);
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", user.getUsername());
             session.setAttribute("email", user.getEmail());
-            session.setAttribute("name", user.getProfile().getName());
+            session.setAttribute("name", profile.getName());
             session.setAttribute("last_access", user.getLastAccess());
             session.setAttribute("rol", rol.getRoleName());
             session.setAttribute("idUser", user.getIdUser());
@@ -97,6 +97,18 @@ public class AuthenticationFacade extends AbstractFacade<Authentication> impleme
         try {
             return em.createNamedQuery("Authentication.findByEmail", Authentication.class)
                     .setParameter("email", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+    
+    // Method to find the user by email coming from loginBean
+    public Profile getProfileById(int id) {
+        try {
+            return em.createNamedQuery("Profile.findByIdUser", Profile.class)
+                    .setParameter("idUser", id)
                     .getSingleResult();
         } catch (Exception e) {
             return null;

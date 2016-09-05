@@ -22,27 +22,44 @@
             
         <h3>Buscar auto</h3>
         
-        <h:form>
+        <h:form id="theCar">
+            <p:growl id="msgs" showDetail="true" />
             <p:outputLabel for="carriagePlate"  value="# Placa: " />
             <p:inputMask id="carriagePlate" value="#{updateCarBean.theCarriagePlate}" mask="aaa999" required="true"/>
 
             <p:messages id="messages"></p:messages>
             <p:commandButton value="Buscar" id="buscar" update="messages" type="submit" action="#{updateCarBean.fillTheCar()}" styleClass="ui-priority-primary" />
             
-        </h:form>
-        <h:form>
-            <p:outputLabel  value="# Id: " />
-            <p:outputLabel value="#{updateCarBean.theCarriagePlate} " />    
+            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                     <h:outputText value="El carro:" />
+                     <h:outputText value="#{updateCarBean.theCarriagePlate}">
+                     </h:outputText>
+                     <h:outputText value="Precio venta:" />
+                     <h:outputText value="#{updateCarBean.originalSalesPrice}">
+                     </h:outputText>
+                </p:panelGrid>
+            </p:dialog>           
+            
         </h:form>
         
+        
   
-         <h:form>
+         <h:form id="modifiedCar">
+            <p:growl id="msgs" showDetail="true" />
             <p:outputLabel for="salesPrice"  value="# Precio de venta: " />
             <p:inputText id="salesPrice" value="#{updateCarBean.salesPrice}">
             </p:inputText>    
             <p:messages id="messages"></p:messages>
             <p:commandButton value="Actualizar" id="buscar" update="messages" type="submit" action="#{updateCarBean.updateCar()}" styleClass="ui-priority-primary" />
             
+            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg1" showEffect="fold">
+                <p:panelGrid id="displayModified" columns="2" columnClasses="label,value">
+                     <h:outputText value="Precio nuevo:" />
+                     <h:outputText value="#{updateCarBean.salesPrice}">
+                     </h:outputText>
+                </p:panelGrid>
+            </p:dialog>        
         </h:form>
         
     </h:body>

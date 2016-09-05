@@ -93,7 +93,14 @@
                             </p:commandButton>
                         </p:panelGrid>
                     </p:column>
+                    
+                    <p:column headerText="Precio de compra">
+                        <h:outputText value="#{car.purchasePrice}" />
+                    </p:column>
 
+                    <p:column headerText="Precio de venta">
+                        <h:outputText value="#{car.salesPrice}" />
+                    </p:column>
 
                     <p:column headerText="Eliminar">
                         <f:facet name="header">

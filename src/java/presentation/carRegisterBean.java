@@ -141,7 +141,7 @@ public class carRegisterBean {
     public String registrarCarro(){
         Cars persistCar = new Cars();
         persistCar.setBrand(marca);
-        persistCar.setCarriagePlate(carriagePlate);
+        persistCar.setCarriagePlate(carriagePlate.toUpperCase());
         persistCar.setChasisNumber(chasisNumber);
         persistCar.setColor(color);
         persistCar.setEngineNumber(engineNumber);
