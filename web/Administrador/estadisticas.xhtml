@@ -26,6 +26,9 @@
                     <p:column headerText="Apellido" sortBy="#{user.lastName}" filterBy="#{user.lastName}" filterMatchMode="contains">
                         <h:outputText value="#{user.lastName}" />
                     </p:column>
+                    <p:column headerText="VentasTotales">
+                        <h:outputText value="#{estadisticasBean.calcularVentasTotales(user.idUser)}" />
+                    </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="" />

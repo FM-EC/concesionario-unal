@@ -39,7 +39,8 @@ public interface SalesFacadeLocal {
     
     public float getComissionPerDay(List <Sales> theSales);
     
-
+    public List<SalesFacade.SellerOfMonth> totalSales();
+    
     Object sellerOfMonth();
 
     int count();

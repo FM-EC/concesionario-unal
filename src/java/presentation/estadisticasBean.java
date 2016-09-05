@@ -6,6 +6,7 @@
 package presentation;
 
 import businessLogic.ProfileFacadeLocal;
+import businessLogic.SalesFacade;
 import businessLogic.SalesFacadeLocal;
 import dataAccess.Profile;
 import dataAccess.Sales;
@@ -228,7 +229,19 @@ public class estadisticasBean {
         yAxis.setMax(30);
 
     }
-
+    
+    public Double calcularVentasTotales(int id){
+                
+        List<SalesFacade.SellerOfMonth> total = sales.totalSales();
+        
+        for (SalesFacade.SellerOfMonth it : total) {
+            if (id == it.getSeller()) {
+                return it.getTotal();
+            }
+        }
+        
+        return 0.0;
+    }
     public String redirect(Profile user) {
         setCurrentUser(user);
         statsByMonth(user);

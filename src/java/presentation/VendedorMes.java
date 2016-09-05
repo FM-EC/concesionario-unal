@@ -7,7 +7,6 @@ package presentation;
 
 import businessLogic.ProfileFacadeLocal;
 import businessLogic.SalesFacadeLocal;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 

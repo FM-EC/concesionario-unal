@@ -93,6 +93,24 @@ public class SalesFacade extends AbstractFacade<Sales> implements SalesFacadeLoc
         }
         return null;
     }
+    
+    @Override
+    public List<SellerOfMonth> totalSales() {
+        try {
+            Query q = em.createNativeQuery("SELECT IDSALES,idUser,sum(totalValue) "
+                    + "FROM sales "
+                    + "GROUP BY idUser HAVING Count(idUser) ORDER BY Count(idUser) DESC");
+            List<Object[]> seller = q.getResultList();
+            List<SellerOfMonth> sellers = new ArrayList<>();
+            for (Object[] obj : seller) {
+                sellers.add(new SellerOfMonth(obj));
+            }
+            return sellers;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public float getCommission(int theId) {
         Sales mySale = new Sales();
