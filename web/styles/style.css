@@ -9,7 +9,7 @@
 @charset "UTF-8";
 
 /*Se importa una fuente del sitio Google Fonts*/
-@import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,300,400italic);
+/*@import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,300,400italic);*/
 
 
 /* ****************** */
@@ -104,6 +104,13 @@ table {
     border-spacing: 2px;    
 }
 
+/* Tablas */
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+    padding: 4px 10px;
+    border-width: 4px;
+    border-style: hidden;
+}
+
 
 /*  Overflow controla que la forma en que los elementos se comportan en su contenedor.
     Se usa hidden para que esconda los elementos. */
@@ -181,16 +188,34 @@ hr {
 	Se define el tipo de letra predeterminado para cada etiqueta que involucra texto.
 	La tipografia predeterminada es Exo 2. Si el navegador no la admite buscara Helvetica, y asi.
 */
-h1, h2, h3, h4, a, label, th {
-	font-family: "Exo 2", Helvetica, Verdana, sans-serif;
+h1, h2, h3, h4, a, label, th, div, form, body {
+	font-family: Helvetica, Verdana, sans-serif;
 	color: #a9a9a9;
 }
 
-p, .ui-widget, td {
-	font-family: "Exo 2", Helvetica, Verdana, sans-serif;
+/*
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    font-size: 80%;
+}*/
+
+.ui-datatable .ui-datatable-header .ui-widget .ui-widget {
+    background: #0088b3;
+    color: #c7f1ff; 
+}
+
+
+.ui-datatable tbody td, .ui-datatable thead th{
+    font-size: 80%;
+} 
+
+p, .ui-widget, td{
+	font-family: Helvetica, Verdana, sans-serif;
 	color: #838383;
 }
 
+.ui-button .ui-button-text  {
+    font-family: Helvetica, Verdana, sans-serif;
+}
 /* Grupo de bloques en la pagina. Con margin-top le indico que se ubique a 200px del inicio de la pantalla.
    Esto se realiza con el fin de que no se muestre encima de la barra de navegacion */
 .grupo {
@@ -267,6 +292,11 @@ body {
 .fin a {
   color: white;
   text-decoration: none;
+}
+
+element.style {
+    height: 100px;
+    width: 250px;
 }
 
 #sitemap {
@@ -354,3 +384,94 @@ body {
     }
 
 }
+
+
+/* Lo que se tira todo */
+.snip1552 {
+  font-family: Helvetica, Verdana, sans-serif;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 0%;
+  min-width: 300px;
+  max-width: 500px;
+  width: 100%;
+  color: #000000;
+  text-align: left;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.snip1552 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.45s ease;
+  transition: all 0.45s ease;
+}
+
+.snip1552 img {
+  vertical-align: top;
+  max-width: 100%;
+  backface-visibility: hidden;
+}
+
+.snip1552 figcaption {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  z-index: 1;
+  bottom: 0;
+}
+
+.snip1552 h3,
+.snip1552 p {
+  margin: 0;
+  opacity: 0;
+  letter-spacing: 1px;
+}
+
+.snip1552 h3 {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.snip1552 p {
+  font-weight: normal;
+  font-style: italic;
+  color: #888;
+  font-size: 0.9em;
+  padding-left: 15px;
+  -webkit-transform: translateX(-25px);
+  transform: translateX(-25px);
+}
+
+.snip1552 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.snip1552:hover > img,
+.snip1552.hover > img {
+  opacity: 0.1;
+}
+
+.snip1552:hover h3,
+.snip1552.hover h3,
+.snip1552:hover p,
+.snip1552.hover p {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* Demo purposes only */

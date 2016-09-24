@@ -19,9 +19,15 @@
         <p:chart id="display" type="line" model="#{estadisticasBean.getAreaModel()}" rendered="#{estadisticasBean.getAreaModel() != null}" style="height:300px; width: 1000px;" />
         
         <h2>Valor de las ventas por mes:</h2>
-        <ui:repeat value="#{estadisticasBean.ventas.entrySet().toArray()}" var="entry">
-                #{entry.key} = $#{entry.value} <br/>
-        </ui:repeat>
+         <p:dataTable var="entry" value="#{estadisticasBean.ventas.entrySet().toArray()}" rows="12" id="usersTable">
+             <p:column headerText="Mes">
+                 <h:outputText value="#{entry.key}" />
+             </p:column>
+             <p:column headerText="Valor total">
+                 <h:outputText value="#{entry.value}" />
+             </p:column>
+         </p:dataTable>
+        
     </h:body>
 </html>
 
